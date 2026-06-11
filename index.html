@@ -438,7 +438,20 @@
 
     .stat-item { 
       text-align: center; 
-      transition: transform 0.3s;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: 16px;
+      padding: 2.5rem 3.5rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .stat-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+      background: rgba(15, 23, 42, 0.6);
     }
     
     .stat-item:hover {
@@ -1321,65 +1334,8 @@
           </div>
         </div>
       </div>
-      <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
 
-    <!-- ABOUT & EXPERIENCE -->
-    <section id="about">
-      <div class="container">
-        <div class="about-grid">
-          
-          <div class="about-text reveal-left">
-            <p class="section-label">About Me</p>
-            <h2 class="section-title">Bridging Complex Backend Logic &amp; Seamless UX</h2>
-            <div class="primary-line"></div>
-            <p>I am <strong>Asher Sajjad</strong> — a high-impact developer with over 2.5 years of experience specializing in e-commerce architecture and AI-driven automation.</p>
-            <p>I am an expert in engineering bespoke Shopify Liquid themes and custom WordPress/PHP solutions from the ground up. I bridge the gap between complex backend logic and seamless UX by deploying Python-based API integrations and building intelligent WhatsApp Chatbots via the Business API.</p>
-            <p>By leveraging Advanced Prompt Engineering and LLM workflows, I automate high-level business processes and scale digital storefronts through clean, high-conversion technical infrastructure.</p>
-            <div class="about-skills">
-              <span class="skill-tag">Shopify Custom Liquid</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">HTML5 / CSS3</span>
-              <span class="skill-tag">WhatsApp Chatbot</span>
-              <span class="skill-tag">Prompt Engineering</span>
-              <span class="skill-tag">API Integrations</span>
-              <span class="skill-tag">WordPress / PHP</span>
-            </div>
-          </div>
-
-          <div class="about-right reveal-right">
-            <h3 class="timeline-title">Experience</h3>
-            <div class="timeline">
-              <div class="timeline-item">
-                <span class="timeline-date">2025 - Present</span>
-                <h4 class="timeline-company">Digital Minds</h4>
-                <span class="timeline-role">Custom Shopify / Chatbot Developer</span>
-                <p class="timeline-desc">Developing custom Shopify Liquid themes and Python-based WhatsApp Chatbots. Specialized in Full-Stack (HTML/CSS/JS) development and complex API integrations to deliver bespoke automation and high-performance digital solutions.</p>
-              </div>
-              <div class="timeline-item">
-                <span class="timeline-date">2024 - 2025</span>
-                <h4 class="timeline-company">Marten Digitals</h4>
-                <span class="timeline-role">Shopify Theme Developer</span>
-                <p class="timeline-desc">Developed custom Shopify Liquid themes and advanced Klaviyo automation. Focused on bespoke feature engineering and store performance to boost user engagement and retention.</p>
-              </div>
-              <div class="timeline-item">
-                <span class="timeline-date">2023 - 2024</span>
-                <h4 class="timeline-company">MMK Media & Graphics</h4>
-                <span class="timeline-role">WordPress & Shopify Developer</span>
-                <p class="timeline-desc">Developed and optimized theme-based storefronts with custom styling, third-party integrations, and performance-ready e-commerce solutions.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES PROJECTS -->
+    </section><!-- SERVICES PROJECTS -->
     <section id="services-projects">
       <div class="container">
         <div class="projects-header reveal">
@@ -1719,7 +1675,60 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+<!-- ABOUT & EXPERIENCE -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          
+          <div class="about-text reveal-left">
+            <p class="section-label">About Me</p>
+            <h2 class="section-title">Bridging Complex Backend Logic &amp; Seamless UX</h2>
+            <div class="primary-line"></div>
+            <p>I am <strong>Asher Sajjad</strong> — a high-impact developer with over 2.5 years of experience specializing in e-commerce architecture and AI-driven automation.</p>
+            <p>I am an expert in engineering bespoke Shopify Liquid themes and custom WordPress/PHP solutions from the ground up. I bridge the gap between complex backend logic and seamless UX by deploying Python-based API integrations and building intelligent WhatsApp Chatbots via the Business API.</p>
+            <p>By leveraging Advanced Prompt Engineering and LLM workflows, I automate high-level business processes and scale digital storefronts through clean, high-conversion technical infrastructure.</p>
+            <div class="about-skills">
+              <span class="skill-tag">Shopify Custom Liquid</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML5 / CSS3</span>
+              <span class="skill-tag">WhatsApp Chatbot</span>
+              <span class="skill-tag">Prompt Engineering</span>
+              <span class="skill-tag">API Integrations</span>
+              <span class="skill-tag">WordPress / PHP</span>
+            </div>
+          </div>
+
+          <div class="about-right reveal-right">
+            <h3 class="timeline-title">Experience</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="timeline-date">2025 - Present</span>
+                <h4 class="timeline-company">Digital Minds</h4>
+                <span class="timeline-role">Custom Shopify / Chatbot Developer</span>
+                <p class="timeline-desc">Developing custom Shopify Liquid themes and Python-based WhatsApp Chatbots. Specialized in Full-Stack (HTML/CSS/JS) development and complex API integrations to deliver bespoke automation and high-performance digital solutions.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-date">2024 - 2025</span>
+                <h4 class="timeline-company">Marten Digitals</h4>
+                <span class="timeline-role">Shopify Theme Developer</span>
+                <p class="timeline-desc">Developed custom Shopify Liquid themes and advanced Klaviyo automation. Focused on bespoke feature engineering and store performance to boost user engagement and retention.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-date">2023 - 2024</span>
+                <h4 class="timeline-company">MMK Media & Graphics</h4>
+                <span class="timeline-role">WordPress & Shopify Developer</span>
+                <p class="timeline-desc">Developed and optimized theme-based storefronts with custom styling, third-party integrations, and performance-ready e-commerce solutions.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    
+        <!-- CONTACT -->
     <section id="contact">
       <div class="container">
         <div class="contact-inner reveal">
