@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asher Sajjad Dev — Portfolio</title>
+  <meta name="description" content="Asher Sajjad Dev — Premium Web Development Portfolio. Client projects spanning services, ecommerce, and digital innovation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ──────────────────────────────────────────────────────────
+       ROOT & RESET
+    ────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #C9A84C;
+      --gold-light:  #E2C47E;
+      --gold-dark:   #8B6914;
+      --black:       #0A0A0A;
+      --dark:        #111111;
+      --dark2:       #181818;
+      --dark3:       #222222;
+      --white:       #F9F5EC;
+      --gray:        #888;
+      --gray2:       #555;
+      --radius:      4px;
+      --transition:  0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       LOCK SCREEN
+    ────────────────────────────────────────────────────────── */
+    #lock-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    #lock-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .lock-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #1a1507 0%, #0A0A0A 70%);
+      overflow: hidden;
+    }
+
+    .lock-bg::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(201,168,76,0.03) 30deg, transparent 60deg);
+      animation: rotateGlow 20s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      to { transform: rotate(360deg); }
+    }
+
+    .lock-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .lock-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 60px rgba(201, 168, 76, 0.3);
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .lock-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .lock-subtitle {
+      font-size: 0.65rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 3rem;
+      animation: fadeIn 1.4s ease forwards;
+    }
+
+    .lock-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      animation: fadeInUp 1.6s ease forwards;
+    }
+
+    .lock-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.25rem;
+    }
+
+    .lock-input-wrap {
+      position: relative;
+    }
+
+    #password-input {
+      background: transparent;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 2px;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      padding: 0.85rem 3rem 0.85rem 1.25rem;
+      width: 280px;
+      outline: none;
+      transition: border-color 0.3s;
+      text-align: center;
+    }
+
+    #password-input::placeholder { color: var(--gray2); letter-spacing: 0.1em; }
+    #password-input:focus { border-color: var(--gold); }
+
+    .lock-btn {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border: none;
+      border-radius: 2px;
+      color: var(--black);
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      padding: 0.9rem 2.5rem;
+      text-transform: uppercase;
+      transition: var(--transition);
+      width: 280px;
+    }
+
+    .lock-btn:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+    }
+
+    .lock-error {
+      color: #c0392b;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      height: 1rem;
+      transition: opacity 0.3s;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       MAIN PORTFOLIO (hidden until unlocked)
+    ────────────────────────────────────────────────────────── */
+    #portfolio {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #portfolio.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       NAVIGATION
+    ────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+      transition: background 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ──────────────────────────────────────────────────────────
+       HERO
+    ────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+        linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      animation: fadeInDown 1s ease 0.2s both;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: 0.05em;
+      animation: fadeInDown 1s ease 0.4s both;
+    }
+
+    .hero-name span { color: var(--gold); }
+
+    .hero-tagline {
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin: 2rem 0 3rem;
+      animation: fadeIn 1s ease 0.6s both;
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 3rem;
+      animation: fadeIn 1s ease 0.8s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      animation: fadeInUp 1s ease 1s both;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.5rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       SECTION COMMONS
+    ────────────────────────────────────────────────────────── */
+    section {
+      padding: 7rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--gray);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 2rem 0;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       ABOUT
+    ────────────────────────────────────────────────────────── */
+    #about {
+      background: var(--dark2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      background: transparent;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 1px;
+      color: var(--gold-light);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      padding: 0.5rem 1rem;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .skill-tag:hover {
+      background: rgba(201, 168, 76, 0.1);
+      border-color: var(--gold);
+    }
+
+    .about-right {
+      position: relative;
+    }
+
+    .about-card {
+      background: rgba(201, 168, 76, 0.05);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 2px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-card p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       PROJECTS — SERVICES
+    ────────────────────────────────────────────────────────── */
+    #services-projects {
+      background: var(--black);
+    }
+
+    .projects-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      position: relative;
+      background: var(--dark2);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card:hover {
+      border-color: rgba(201, 168, 76, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.15);
+    }
+
+    .project-card-inner {
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.5rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 0.3rem 0.7rem;
+      border-radius: 1px;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .project-url {
+      font-size: 0.6rem;
+      color: var(--gray2);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .project-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    .project-footer {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tech-pill {
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray2);
+      background: rgba(255,255,255,0.04);
+      padding: 0.25rem 0.6rem;
+      border-radius: 1px;
+    }
+
+    .project-arrow {
+      color: var(--gold);
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       PROJECTS — ECOMMERCE
+    ────────────────────────────────────────────────────────── */
+    #ecom-projects {
+      background: var(--dark2);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       FEATURED — large card
+    ────────────────────────────────────────────────────────── */
+    .featured-card {
+      background: linear-gradient(135deg, var(--dark3), var(--dark2));
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 2px;
+      padding: 3rem;
+      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .featured-card:hover {
+      border-color: rgba(201, 168, 76, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .featured-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .featured-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .featured-badge {
+      font-size: 0.5rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+      padding: 0.35rem 0.9rem;
+      border-radius: 1px;
+    }
+
+    .featured-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .featured-url {
+      font-size: 0.65rem;
+      color: var(--gray2);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .featured-desc {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+
+    .featured-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      transition: gap 0.3s;
+    }
+
+    .featured-card:hover .featured-link-btn { gap: 0.8rem; }
+
+    /* ──────────────────────────────────────────────────────────
+       CAPABILITIES
+    ────────────────────────────────────────────────────────── */
+    #capabilities {
+      background: var(--black);
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 4rem;
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .capability-item {
+      padding: 3rem 2rem;
+      border-right: 1px solid rgba(201,168,76,0.1);
+      transition: background 0.4s;
+    }
+
+    .capability-item:last-child { border-right: none; }
+    .capability-item:hover { background: rgba(201,168,76,0.04); }
+
+    .capability-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 200;
+      color: rgba(201,168,76,0.2);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .capability-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-desc {
+      font-size: 0.75rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       CONTACT
+    ────────────────────────────────────────────────────────── */
+    #contact {
+      background: var(--dark2);
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-email {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--gold);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      margin: 2rem 0;
+      display: inline-block;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding-bottom: 0.25rem;
+      transition: border-color 0.3s;
+    }
+
+    .contact-email:hover { border-color: var(--gold); }
+
+    .contact-cta {
+      margin-top: 3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--black);
+      padding: 1rem 2.5rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .contact-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(201,168,76,0.3);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: 0.15em;
+    }
+
+    footer p {
+      font-size: 0.6rem;
+      color: var(--gray2);
+      letter-spacing: 0.15em;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       ANIMATIONS
+    ────────────────────────────────────────────────────────── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .capabilities-grid { grid-template-columns: 1fr 1fr; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      .featured-inner { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       LOCK SCREEN
+  ═══════════════════════════════════════════════════════════ -->
+  <div id="lock-screen">
+    <div class="lock-bg"></div>
+    <div class="lock-content">
+      <div class="lock-monogram">AS</div>
+      <div class="lock-divider"></div>
+      <p class="lock-subtitle">Private Portfolio Access Required</p>
+      <form class="lock-form" id="lock-form" onsubmit="checkPassword(event)">
+        <label class="lock-label" for="password-input">Enter Access Code</label>
+        <div class="lock-input-wrap">
+          <input 
+            type="password" 
+            id="password-input" 
+            placeholder="••••••••••" 
+            autocomplete="off"
+            autofocus
+          >
+        </div>
+        <button type="submit" class="lock-btn">Unlock Portfolio</button>
+        <div class="lock-error" id="lock-error">&nbsp;</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PORTFOLIO
+  ═══════════════════════════════════════════════════════════ -->
+  <div id="portfolio">
+
+    <!-- NAV -->
+    <nav id="main-nav">
+      <div class="nav-logo">Asher Sajjad</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services-projects">Services</a></li>
+        <li><a href="#ecom-projects">E-Commerce</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Web Development &amp; Digital Solutions</p>
+        <h1 class="hero-name">Asher <span>Sajjad</span></h1>
+        <p class="hero-tagline">Crafting Premium Digital Experiences</p>
+        <div class="hero-divider"></div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">16+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Verticals</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Countries Served</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Dedication</span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Building the Digital World, One Pixel at a Time</h2>
+            <div class="gold-line"></div>
+            <p>I am <strong>Asher Sajjad</strong> — a full-stack web developer with a passion for building premium, high-performance digital experiences. I specialise in creating sophisticated web presences for ambitious brands across services and e-commerce.</p>
+            <p>My portfolio spans businesses in Pakistan, UAE, and beyond — from luxury limousine services in Dubai to high-end jewellery e-commerce, from cutting-edge tech platforms to boutique fashion stores. Every project is crafted with precision, purpose, and pride.</p>
+            <p>I believe great code is invisible — what your clients see is a seamless, beautiful experience that <strong>converts visitors into customers</strong>.</p>
+            <div class="about-skills">
+              <span class="skill-tag">WordPress</span>
+              <span class="skill-tag">Shopify</span>
+              <span class="skill-tag">WooCommerce</span>
+              <span class="skill-tag">Elementor</span>
+              <span class="skill-tag">HTML / CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">SEO</span>
+              <span class="skill-tag">UI / UX</span>
+              <span class="skill-tag">E-Commerce</span>
+              <span class="skill-tag">Web Hosting</span>
+              <span class="skill-tag">Performance</span>
+            </div>
+          </div>
+          <div class="about-right reveal">
+            <div class="about-card">
+              <div class="about-card-icon">🏆</div>
+              <h3>Premium Quality</h3>
+              <p>Every project undergoes meticulous attention to detail — pixel-perfect layouts, optimised performance, and mobile-first responsiveness.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🌍</div>
+              <h3>Global Reach</h3>
+              <p>Clients across Pakistan, UAE, USA, and international markets. Multilingual, multi-currency, multi-timezone expertise.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">⚡</div>
+              <h3>Fast Delivery</h3>
+              <p>Agile development process ensuring rapid turnaround without compromising on quality or functionality.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES PROJECTS -->
+    <section id="services-projects">
+      <div class="container">
+        <div class="projects-header reveal">
+          <div>
+            <p class="section-label">Portfolio — Services</p>
+            <h2 class="section-title">Service Websites</h2>
+            <p class="section-subtitle">Custom-built websites for businesses delivering real-world services — from tech consultancies and professional firms to luxury hospitality and enterprise solutions.</p>
+          </div>
+        </div>
+
+        <!-- Featured: Rexotech -->
+        <a href="https://rexotech.io" target="_blank" class="featured-card reveal">
+          <div class="featured-inner">
+            <div>
+              <div class="featured-label">
+                <span class="featured-badge">Featured Project</span>
+              </div>
+              <div class="project-name featured-name">Rexotech</div>
+              <span class="featured-url">rexotech.io</span>
+              <p class="featured-desc">A full-service digital agency offering cutting-edge technology solutions. Rexotech provides web development, mobile app development, UI/UX design, and IT consulting services to businesses looking to accelerate their digital transformation. The website showcases a sophisticated portfolio of enterprise solutions with clean, modern Elementor-powered design.</p>
+              <span class="featured-link-btn">Visit Project →</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="projects-grid">
+
+          <!-- Sensory Sentiments -->
+          <a href="https://sensorysentiments.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Creative Services</span>
+              <div class="project-name">Sensory Sentiments</div>
+              <span class="project-url">sensorysentiments.com</span>
+              <p class="project-desc">A creative sensory experience brand delivering curated events, gifting, and lifestyle experiences. The website blends emotive storytelling with elegant design to draw visitors into an immersive brand journey focused on premium sensory products and bespoke gifting.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">WordPress</span>
+                  <span class="tech-pill">Elementor</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- QuantechQube -->
+          <div class="project-card reveal" style="cursor:default;">
+            <div class="project-card-inner">
+              <span class="project-tag" style="border-color:rgba(136,136,136,0.3);color:var(--gray);">Tech Platform</span>
+              <div class="project-name" style="color:var(--gray);">QuantechQube</div>
+              <span class="project-url">quantechqube.com</span>
+              <p class="project-desc">A quantitative technology platform at the intersection of finance and algorithmic intelligence. QuantechQube specialises in data-driven trading solutions, fintech tooling, and quantitative analysis frameworks — currently undergoing redevelopment.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">Fintech</span>
+                  <span class="tech-pill">Custom Dev</span>
+                </div>
+                <span class="project-arrow" style="color:var(--gray);">⊘</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WJLC -->
+          <a href="http://wjlc-sa.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Legal / Corporate</span>
+              <div class="project-name">WJLC Saudi Arabia</div>
+              <span class="project-url">wjlc-sa.com</span>
+              <p class="project-desc">A professional legal services website for a Saudi Arabian law consultancy. Delivering authoritative, trust-building design for a firm operating in one of the region's most prestigious legal markets — clean corporate aesthetic with full Arabic language support and professional firm credibility.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">WordPress</span>
+                  <span class="tech-pill">Bilingual</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- AIMS Associates -->
+          <a href="https://aimsassociates.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Professional Services</span>
+              <div class="project-name">AIMS Associates</div>
+              <span class="project-url">aimsassociates.com</span>
+              <p class="project-desc">A professional management and consulting firm providing strategic advisory, business development, and corporate services. AIMS Associates' website conveys credibility and authority, serving clients across multiple sectors with tailored consultancy solutions and expert advisory teams.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">WordPress</span>
+                  <span class="tech-pill">Elementor</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Star Skyline Limousine -->
+          <a href="https://starskylinelimousine.ae" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Luxury Automotive</span>
+              <div class="project-name">Star Skyline Limousine</div>
+              <span class="project-url">starskylinelimousine.ae</span>
+              <p class="project-desc">Dubai's premier chauffeur-driven luxury car rental service. Star Skyline Limousine delivers top-class chauffeured experiences across the UAE. The website showcases their fleet of luxury vehicles with an elegant, premium design that mirrors the sophistication of their on-ground service offering.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">WordPress</span>
+                  <span class="tech-pill">UAE Market</span>
+                  <span class="tech-pill">Booking</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- HH Enterprise -->
+          <a href="https://hhenterprise.pk" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Fashion / Wholesale</span>
+              <div class="project-name">HH Enterprise</div>
+              <span class="project-url">hhenterprise.pk</span>
+              <p class="project-desc">A Pakistan-based wholesale fashion and apparel enterprise platform offering a wide catalog including fine jewelry, women's and men's clothing, accessories, bags, and more. Built on a robust multi-category e-commerce architecture with wholesale and retail ordering capabilities.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">Custom Platform</span>
+                  <span class="tech-pill">Wholesale</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- WebStorm Lab -->
+          <a href="https://webstormlab.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Web Agency</span>
+              <div class="project-name">Web Storm Lab</div>
+              <span class="project-url">webstormlab.com</span>
+              <p class="project-desc">A full-service web and app development studio delivering web excellence across multiple verticals. Web Storm Lab specialises in bespoke digital solutions — from cutting-edge web applications to brand-defining creative campaigns, using a Poppins & Roboto driven clean enterprise aesthetic.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">WordPress</span>
+                  <span class="tech-pill">Digeco Theme</span>
+                  <span class="tech-pill">Agency</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ECOM PROJECTS -->
+    <section id="ecom-projects">
+      <div class="container">
+        <div class="projects-header reveal">
+          <div>
+            <p class="section-label">Portfolio — E-Commerce</p>
+            <h2 class="section-title">Online Stores</h2>
+            <p class="section-subtitle">High-converting Shopify and WooCommerce stores built to drive sales — from toy retailers and organic naturals to preloved tech gadgets and performance sportswear.</p>
+          </div>
+        </div>
+
+        <!-- Featured: TechMarket -->
+        <a href="https://techmarket.ae" target="_blank" class="featured-card reveal">
+          <div class="featured-inner">
+            <div>
+              <div class="featured-label">
+                <span class="featured-badge">Featured Ecom Store</span>
+              </div>
+              <div class="project-name featured-name">Tech Market</div>
+              <span class="featured-url">techmarket.ae</span>
+              <p class="featured-desc">UAE's trusted destination for preloved and certified pre-owned devices. Tech Market offers professionally tested smartphones, laptops, MacBooks, Surface Pros, and gadgets — all with verified quality and certified performance. Built on Shopify with a gold/dark luxury aesthetic perfectly matching the premium refurbished tech space in the UAE market.</p>
+              <span class="featured-link-btn">Visit Project →</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="projects-grid">
+
+          <!-- MyToys -->
+          <a href="https://www.mytoys.com.pk" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Toys / Children</span>
+              <div class="project-name">My Toys</div>
+              <span class="project-url">mytoys.com.pk</span>
+              <p class="project-desc">Pakistan's trusted toy store offering premium, safe, and educational toys for all ages. MyToys delivers a vibrant, family-friendly Shopify experience with fast delivery and quality guarantees — built around the Fredoka and Inter font combination for a playful yet professional look.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">Shopify</span>
+                  <span class="tech-pill">Pakistan</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Agha Naturals -->
+          <a href="https://aghanaturals.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Natural / Organic</span>
+              <div class="project-name">Agha Naturals</div>
+              <span class="project-url">aghanaturals.com</span>
+              <p class="project-desc">A premium organic natural products store focused on clean beauty, wellness, and organic lifestyle products. Agha Naturals offers a curated selection of natural remedies and organic goods with a clean, pure Shopify storefront that communicates authenticity and trust in the natural products space.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">Shopify</span>
+                  <span class="tech-pill">Organic</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Julhas Collection -->
+          <a href="https://julhascollection.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Fashion / Apparel</span>
+              <div class="project-name">Julhaas Collection</div>
+              <span class="project-url">julhascollection.com</span>
+              <p class="project-desc">A boutique fashion and apparel brand offering a curated collection of clothing and accessories. Julhaas Collection's Shopify store presents a clean, minimal aesthetic with elegant typography (Helvetica/Arial) that lets the fashion speak for itself — ideal for a discerning clientele.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">Shopify</span>
+                  <span class="tech-pill">Fashion</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Billfish Gear -->
+          <a href="https://billfishgear.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Outdoor / Performance</span>
+              <div class="project-name">Billfish Gear</div>
+              <span class="project-url">billfishgear.com</span>
+              <p class="project-desc">Leaders in lightweight performance apparel designed for the most challenging environments — on and off the water. Billfish Gear delivers moisture-wicking, technical performance clothing via a bold Shopify store with Montserrat typography and a rugged, outdoor-adventure aesthetic aimed at serious sportspeople.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">Shopify</span>
+                  <span class="tech-pill">Performance</span>
+                  <span class="tech-pill">USA</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Trend Square Store -->
+          <a href="https://trendsquarestore.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Fashion / Trends</span>
+              <div class="project-name">Trend Square Store</div>
+              <span class="project-url">trendsquarestore.com</span>
+              <p class="project-desc">A trend-driven fashion and lifestyle store keeping shoppers at the cutting edge of style. Trend Square offers a dynamic shopping experience with a wide range of on-trend clothing, accessories, and lifestyle products — built for high conversion and trend-conscious customers.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">E-Commerce</span>
+                  <span class="tech-pill">Fashion</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Padel Up -->
+          <a href="https://padelup.pk" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Sports / Equipment</span>
+              <div class="project-name">Padel Up</div>
+              <span class="project-url">padelup.pk</span>
+              <p class="project-desc">Pakistan's go-to destination for padel tennis equipment and accessories. Padel Up serves the rapidly growing padel community in Pakistan with rackets, balls, and gear from leading brands — a specialist sports e-commerce store built for enthusiasts at every level of the game.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">E-Commerce</span>
+                  <span class="tech-pill">Sports</span>
+                  <span class="tech-pill">Pakistan</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Pump Culture LLC -->
+          <a href="https://pumpculturellc.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Fitness / Lifestyle</span>
+              <div class="project-name">Pump Culture LLC</div>
+              <span class="project-url">pumpculturellc.com</span>
+              <p class="project-desc">A fitness lifestyle brand combining premium gym apparel, supplements, and training culture. Pump Culture LLC celebrates the pursuit of peak performance — building a community around fitness, strength, and a relentless dedication to progress through an energetic, high-impact online store.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">E-Commerce</span>
+                  <span class="tech-pill">Fitness</span>
+                  <span class="tech-pill">USA</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities">
+      <div class="container">
+        <div class="reveal" style="text-align:center; max-width:700px; margin:0 auto 1rem;">
+          <p class="section-label">What I Do</p>
+          <h2 class="section-title">Core Capabilities</h2>
+          <p class="section-subtitle">A full suite of digital services delivered with precision, creativity, and commercial acumen.</p>
+        </div>
+
+        <div class="capabilities-grid reveal">
+          <div class="capability-item">
+            <span class="capability-num">01</span>
+            <div class="capability-title">Web Design & Development</div>
+            <p class="capability-desc">Pixel-perfect, responsive websites built on WordPress, Shopify, and custom stacks. From concept to launch — designed to impress and convert.</p>
+          </div>
+          <div class="capability-item">
+            <span class="capability-num">02</span>
+            <div class="capability-title">E-Commerce Solutions</div>
+            <p class="capability-desc">Full Shopify and WooCommerce store builds — product management, payment gateways, shipping integrations, and optimised checkout flows.</p>
+          </div>
+          <div class="capability-item">
+            <span class="capability-num">03</span>
+            <div class="capability-title">UI / UX Design</div>
+            <p class="capability-desc">User-centred interface design with a focus on premium aesthetics, intuitive navigation, and brand consistency across every touchpoint.</p>
+          </div>
+          <div class="capability-item">
+            <span class="capability-num">04</span>
+            <div class="capability-title">SEO & Performance</div>
+            <p class="capability-desc">Search engine optimisation, page speed enhancements, Core Web Vitals tuning, and technical SEO audits to drive organic growth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-inner reveal">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-title">Let's Build Something<br>Extraordinary</h2>
+          <div class="gold-line" style="margin: 2rem auto;"></div>
+          <p class="section-subtitle" style="margin: 0 auto;">Have a project in mind? Whether it's a brand-new website, an e-commerce store, or a digital transformation — let's talk about how to make it happen.</p>
+          <a href="mailto:asher@ashersajjad.dev" class="contact-email">asher@ashersajjad.dev</a>
+          <br>
+          <a href="mailto:asher@ashersajjad.dev" class="contact-cta">
+            Start a Project
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="logo">AS Dev</div>
+      <p>© 2025 Asher Sajjad Dev. All Rights Reserved.</p>
+    </footer>
+
+  </div><!-- /#portfolio -->
+
+  <script>
+    /* ── Password Gate ─────────────────────────────────── */
+    const PASSWORD = 'Random4321';
+
+    function checkPassword(e) {
+      e.preventDefault();
+      const input = document.getElementById('password-input');
+      const error = document.getElementById('lock-error');
+
+      if (input.value === PASSWORD) {
+        const lock = document.getElementById('lock-screen');
+        const portfolio = document.getElementById('portfolio');
+
+        lock.classList.add('hidden');
+        portfolio.style.display = 'block';
+
+        // Force reflow then fade in
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            portfolio.classList.add('visible');
+          });
+        });
+
+        // Start scroll reveal
+        initReveal();
+      } else {
+        error.textContent = 'Incorrect access code. Please try again.';
+        input.value = '';
+        input.focus();
+
+        // shake animation
+        input.style.animation = 'none';
+        setTimeout(() => {
+          input.style.animation = 'shake 0.4s ease';
+        }, 10);
+
+        setTimeout(() => { error.textContent = '\u00a0'; }, 3000);
+      }
+    }
+
+    /* ── Scroll Reveal ─────────────────────────────────── */
+    function initReveal() {
+      const els = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      els.forEach(el => observer.observe(el));
+    }
+
+    /* ── Nav Scroll Effect ─────────────────────────────── */
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      if (nav) {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+      }
+    });
+
+    /* ── Shake CSS ─────────────────────────────────────── */
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        20%       { transform: translateX(-8px); }
+        40%       { transform: translateX(8px); }
+        60%       { transform: translateX(-6px); }
+        80%       { transform: translateX(6px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
