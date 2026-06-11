@@ -1724,7 +1724,7 @@
       const input = document.getElementById('password-input');
       const error = document.getElementById('lock-error');
 
-      if (input.value === PASSWORD) {
+      if (input.value.trim() === PASSWORD) {
         const lock = document.getElementById('lock-screen');
         const portfolio = document.getElementById('portfolio');
 
@@ -1732,12 +1732,10 @@
         portfolio.style.display = 'block';
 
         // Force reflow then fade in
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            portfolio.classList.add('visible');
-            initReveal();
-          });
-        });
+        setTimeout(() => {
+          portfolio.classList.add('visible');
+          try { initReveal(); } catch(err) { console.error(err); }
+        }, 50);
 
       } else {
         error.textContent = 'Incorrect access code. Please try again.';
