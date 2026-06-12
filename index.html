@@ -1,47 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <title>Rexo Tech | Innovating With Excellence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AS Dev — Web Developer Portfolio</title>
-  <meta name="description"
-    content="Premium web development portfolio. Bespoke Shopify Liquid themes, WordPress/PHP solutions, and AI automation.">
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
+    /* ── ROOT & RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0a0f;
-      --bg2: #0e0e16;
-      --glass: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(59, 130, 246, 0.15);
-      --blue: #2563eb;
-      --blue-light: #3b82f6;
-      --white: #e8eaf0;
-      --gray: #8b93a7;
-      --gray2: #5a6175;
-      --radius: 10px;
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      /* Premium Light Theme */
+      --primary:       #2563eb;      /* Bright Blue */
+      --primary-light: #3b82f6;    /* Light Blue */
+      --primary-dark:  #1d4ed8;    /* Deep Royal Blue */
+      --black:         #f8fafc;      /* Background (Slate 50) */
+      --dark:          #f1f5f9;      /* Sections (Slate 100) */
+      --dark2:         #e2e8f0;      /* Cards (Slate 200) */
+      --dark3:         #cbd5e1;      /* Borders (Slate 300) */
+      --white:         #0f172a;      /* Text (Slate 900) */
+      --gray:          #475569;      /* Muted text */
+      --radius:        12px;
+      --transition:    0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth
-    }
+    html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
+      background: var(--black);
       color: var(--white);
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
@@ -49,1495 +39,334 @@
       overflow-x: hidden;
     }
 
-    /* ── LOCK SCREEN ─────────────────────────────── */
-    #lock-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(ellipse at center, #10101c 0%, var(--bg) 70%);
-      transition: opacity .8s ease, visibility .8s ease;
-    }
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; margin-bottom: 1rem; color: var(--white); }
+    p { margin-bottom: 1.5rem; color: var(--gray); }
+    a { color: var(--primary); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--primary-dark); }
 
-    #lock-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none
-    }
-
-    #lock-screen::before {
-      content: '';
-      position: absolute;
-      inset: -50%;
-      background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.08) 30deg, transparent 60deg);
-      animation: spin 20s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg)
-      }
-    }
-
-    .lock-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 2rem
-    }
-
-    .lock-monogram {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 10vw, 7rem);
-      font-weight: 400;
-      color: var(--blue-light);
-      letter-spacing: .2em;
-      line-height: 1;
-      text-shadow: 0 0 60px rgba(59, 130, 246, .5);
-      animation: fadeDown 1s var(--ease) both, glow 4s infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 30px rgba(59, 130, 246, .3)
-      }
-
-      to {
-        text-shadow: 0 0 80px rgba(59, 130, 246, .7)
-      }
-    }
-
-    .lock-divider {
-      width: 80px;
-      height: 1px;
-      margin: 1.5rem auto;
-      background: linear-gradient(90deg, transparent, var(--blue), transparent);
-    }
-
-    .lock-subtitle {
-      font-size: .65rem;
-      letter-spacing: .45em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 3rem;
-    }
-
-    .lock-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      animation: fadeUp 1.4s var(--ease) both
-    }
-
-    .lock-label {
-      font-size: .6rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--gray)
-    }
-
-    #password-input {
-      width: 280px;
-      padding: .85rem 1.25rem;
-      text-align: center;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      color: var(--white);
-      font-family: 'Montserrat', sans-serif;
-      font-size: .9rem;
-      letter-spacing: .15em;
-      outline: none;
-      transition: .3s;
-    }
-
-    #password-input::placeholder {
-      color: var(--gray2)
-    }
-
-    #password-input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 20px rgba(59, 130, 246, .25)
-    }
-
-    .lock-btn {
-      width: 280px;
-      padding: .9rem 2.5rem;
-      cursor: pointer;
-      background: linear-gradient(135deg, #1d4ed8, var(--blue));
-      border: none;
-      border-radius: var(--radius);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: .6rem;
-      font-weight: 500;
-      letter-spacing: .4em;
-      text-transform: uppercase;
-      transition: .4s var(--ease);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .lock-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255, 255, 255, .25), transparent);
-      transform: skewX(-20deg);
-      transition: .5s;
-    }
-
-    .lock-btn:hover::after {
-      left: 150%
-    }
-
-    .lock-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(59, 130, 246, .4)
-    }
-
-    .lock-error {
-      color: #ef4444;
-      font-size: .65rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      height: 1rem
-    }
-
-    @keyframes shake {
-
-      0%,
-      100% {
-        transform: translateX(0)
-      }
-
-      20% {
-        transform: translateX(-8px)
-      }
-
-      40% {
-        transform: translateX(8px)
-      }
-
-      60% {
-        transform: translateX(-6px)
-      }
-
-      80% {
-        transform: translateX(6px)
-      }
-    }
-
-    /* ── PORTFOLIO SHELL ─────────────────────────── */
-    #portfolio {
-      display: none;
-      opacity: 0;
-      transition: opacity 1s ease
-    }
-
-    #portfolio.visible {
-      display: block;
-      opacity: 1
-    }
-
-    /* ── NAV ─────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-      transition: .4s ease;
-    }
-
-    nav.scrolled {
-      padding: 1rem 3rem;
-      background: rgba(10, 10, 15, .7);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      letter-spacing: .15em;
-      color: var(--blue-light);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none
-    }
-
-    .nav-links a {
-      color: var(--gray);
-      text-decoration: none;
-      font-size: .6rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      position: relative;
-      transition: color .3s;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--blue);
-      transition: width .3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--blue-light)
-    }
-
-    .nav-links a:hover::after {
-      width: 100%
-    }
-
-    /* ── HERO ────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 40%, rgba(37, 99, 235, .12) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 60%, rgba(37, 99, 235, .08) 0%, transparent 50%);
-    }
-
-    .hero-grid {
-      position: absolute;
-      left: -20%;
-      right: -20%;
-      bottom: -10%;
-      height: 60%;
-      background-image:
-        linear-gradient(rgba(59, 130, 246, .15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, .15) 1px, transparent 1px);
-      background-size: 60px 60px;
-      transform: perspective(500px) rotateX(60deg);
-      mask-image: linear-gradient(to top, black 30%, transparent 90%);
-      -webkit-mask-image: linear-gradient(to top, black 30%, transparent 90%);
-      animation: gridMove 3s linear infinite;
-    }
-
-    @keyframes gridMove {
-      from {
-        background-position: 0 0
-      }
-
-      to {
-        background-position: 0 60px
-      }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2
-    }
-
-    .hero-eyebrow {
-      font-size: .6rem;
-      letter-spacing: .6em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 2rem;
-      text-shadow: 0 0 12px rgba(59, 130, 246, .5);
-      animation: fadeDown 1s var(--ease) .2s both;
-    }
-
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 11vw, 9rem);
-      font-weight: 400;
-      line-height: 1;
-      animation: heroIn 1.2s var(--ease) .4s both;
-    }
-
-    .hero-name span {
-      background: linear-gradient(135deg, var(--blue), var(--blue-light) 60%, #93c5fd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-
-    @keyframes heroIn {
-      from {
-        opacity: 0;
-        transform: scale(.92) translateY(20px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .hero-tagline {
-      font-size: clamp(.6rem, 1.5vw, .75rem);
-      letter-spacing: .5em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin: 2rem 0 3.5rem;
-      animation: fadeIn 1s ease .7s both;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 1s var(--ease) .9s both;
-    }
-
-    .stat-card {
-      padding: 2rem 3rem;
-      border-radius: 14px;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      transition: .4s var(--ease);
-    }
-
-    .stat-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(59, 130, 246, .4);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .5), 0 0 30px rgba(59, 130, 246, .12);
-    }
-
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 400;
-      color: var(--blue-light);
-      display: block;
-      line-height: 1;
-      text-shadow: 0 0 25px rgba(59, 130, 246, .4);
-    }
-
-    .stat-label {
-      font-size: .55rem;
-      letter-spacing: .4em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: .6rem;
-      display: block;
-    }
-
-    /* ── SECTION COMMONS ─────────────────────────── */
-    section {
-      padding: 8rem 2rem;
-      position: relative
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2
-    }
-
-    .alt-bg {
-      background: var(--bg2)
-    }
+    /* ── LAYOUT & UTILITIES ── */
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .section-padding { padding: 100px 0; }
+    .text-center { text-align: center; }
+    
+    .primary-line { width: 60px; height: 3px; background: var(--primary); margin-bottom: 2rem; }
+    .primary-line.center { margin: 0 auto 2rem auto; }
 
     .section-label {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      padding: .3rem .9rem;
-      font-size: .55rem;
-      letter-spacing: .5em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      border-radius: 20px;
-      background: rgba(59, 130, 246, .08);
-      border: 1px solid var(--glass-border);
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 1rem; display: block;
     }
+    .section-title { font-size: 2.5rem; margin-bottom: 1.5rem; }
 
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 6vw, 4.2rem);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      padding: 1.5rem 0; transition: all 0.3s; background: rgba(248, 250, 252, 0.9);
+      backdrop-filter: blur(10px); border-bottom: 1px solid transparent;
     }
+    nav.scrolled { padding: 1rem 0; border-bottom: 1px solid var(--dark3); box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.1em; color: var(--primary-dark); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
+    .nav-links a:hover { color: var(--primary); }
 
-    .section-subtitle {
-      font-size: .9rem;
-      color: var(--gray);
-      max-width: 620px;
-      line-height: 1.9
+    /* ── HERO SECTION ── */
+    .hero {
+      position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
     }
-
-    .section-head {
-      margin-bottom: 4rem
-    }
-
-    /* ── CARDS (shared 3D / glass) ───────────────── */
-    .project-card,
-    .featured-card {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: inherit;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-      transition: transform .15s ease-out, border-color .4s, box-shadow .4s;
-      will-change: transform;
-    }
-
-    .project-card:hover,
-    .featured-card:hover {
-      border-color: rgba(59, 130, 246, .45);
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, .7), 0 0 40px rgba(59, 130, 246, .1);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 2rem;
-    }
-
-    .card-inner {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1
-    }
-
-    .project-tag {
-      align-self: flex-start;
-      margin-bottom: 1.4rem;
-      padding: .3rem .8rem;
-      font-size: .5rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      border: 1px solid rgba(59, 130, 246, .3);
-      border-radius: 20px;
-      background: rgba(59, 130, 246, .06);
-    }
-
-    .project-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: .4rem;
-      transition: color .3s;
-    }
-
-    .project-card:hover .project-name,
-    .featured-card:hover .project-name {
-      color: var(--blue-light)
-    }
-
-    .project-url {
-      font-size: .65rem;
-      color: var(--gray2);
-      letter-spacing: .1em;
-      margin-bottom: 1.25rem;
-      display: block
-    }
-
-    .project-desc {
-      font-size: .85rem;
-      color: var(--gray);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      flex-grow: 1
-    }
-
-    .project-footer {
-      margin-top: auto;
-      padding-top: 1.4rem;
-      border-top: 1px solid rgba(59, 130, 246, .1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem
-    }
-
-    .tech-pill {
-      font-size: .5rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      background: rgba(255, 255, 255, .04);
-      padding: .3rem .7rem;
-      border-radius: 3px;
-    }
-
-    .project-arrow {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      color: var(--blue-light);
-      background: rgba(59, 130, 246, .1);
-      transition: .3s var(--ease);
-    }
-
-    .project-card:hover .project-arrow {
-      background: var(--blue);
-      color: #fff;
-      transform: translateX(4px)
-    }
-
-    /* Featured card */
-    .featured-card {
-      margin-bottom: 2rem;
-      background: linear-gradient(135deg, rgba(59, 130, 246, .06), var(--glass) 60%)
-    }
-
-    .featured-card .card-inner {
-      padding: 4rem
-    }
-
-    .featured-badge {
-      align-self: flex-start;
-      margin-bottom: 1.5rem;
-      padding: .4rem 1rem;
-      font-size: .55rem;
-      letter-spacing: .4em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      border-radius: 20px;
-      background: rgba(59, 130, 246, .12);
-      border: 1px solid rgba(59, 130, 246, .3);
-    }
-
-    .featured-card .project-name {
-      font-size: 3rem;
-      font-weight: 300
-    }
-
-    .featured-card .project-desc {
-      max-width: 800px;
-      font-size: .95rem
-    }
-
-    .featured-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .8rem;
-      margin-top: 1rem;
-      color: var(--blue-light);
-      font-size: .65rem;
-      font-weight: 500;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      transition: gap .3s;
-    }
-
-    .featured-card:hover .featured-cta {
-      gap: 1.3rem
-    }
-
-    /* ── CAPABILITIES ────────────────────────────── */
-    .capabilities-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin-top: 4rem;
-      background: var(--glass-border);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .capability-item {
-      padding: 3.5rem 2.25rem;
-      background: var(--bg);
-      position: relative;
-      transition: .4s ease;
-    }
-
-    .capability-item::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--blue);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .4s;
-    }
-
-    .capability-item:hover {
-      background: rgba(59, 130, 246, .04);
-      transform: translateY(-8px);
-      z-index: 5;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .5)
-    }
-
-    .capability-item:hover::before {
-      transform: scaleX(1)
-    }
-
-    .capability-icon {
-      color: var(--blue-light);
-      margin-bottom: 1.75rem;
-      transition: transform .4s
-    }
-
-    .capability-item:hover .capability-icon {
-      transform: scale(1.1) translateY(-4px)
-    }
-
-    .capability-icon svg {
-      width: 44px;
-      height: 44px;
-      stroke-width: 1.2
-    }
-
-    .capability-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      margin-bottom: .9rem
-    }
-
-    .capability-desc {
-      font-size: .83rem;
-      color: var(--gray);
-      line-height: 1.8
-    }
-
-    /* ── ABOUT ───────────────────────────────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
-      align-items: start
-    }
-
-    .about-text p {
-      font-size: .95rem;
-      color: var(--gray);
-      line-height: 2;
-      margin-bottom: 1.4rem
-    }
-
-    .about-text strong {
-      color: var(--white);
-      font-weight: 500;
-      border-bottom: 1px solid rgba(59, 130, 246, .4)
-    }
-
-    .blue-line {
-      width: 80px;
-      height: 2px;
-      margin: 1.75rem 0 2.25rem;
-      background: linear-gradient(90deg, var(--blue), transparent);
-    }
-
-    .about-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-      align-content: flex-start;
-      padding-top: 4.5rem
-    }
-
-    .skill-tag {
-      padding: .6rem 1.2rem;
-      border-radius: 20px;
-      font-size: .55rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      background: var(--glass);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      transition: .4s var(--ease);
-    }
-
-    .skill-tag:hover {
-      background: var(--blue);
-      color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(59, 130, 246, .35);
-    }
-
-    /* ── FOOTER ──────────────────────────────────── */
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 3rem 4rem;
-      border-top: 1px solid var(--glass-border);
-    }
-
-    footer .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      letter-spacing: .15em;
-      color: var(--blue-light)
-    }
-
-    footer p {
-      font-size: .65rem;
-      color: var(--gray2);
-      letter-spacing: .15em
-    }
-
-    /* ── ANIMATION HELPERS ───────────────────────── */
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0
-      }
-
-      to {
-        opacity: 1
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s var(--ease), transform 1s var(--ease)
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: none
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    /* ── RESPONSIVE ──────────────────────────────── */
-    @media (max-width:900px) {
-
-      nav,
-      nav.scrolled {
-        padding: 1.25rem 1.5rem
-      }
-
-      .nav-links {
-        display: none
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem
-      }
-
-      .about-skills {
-        padding-top: 0
-      }
-
-      .capabilities-grid {
-        grid-template-columns: 1fr 1fr
-      }
-
-      .featured-card .card-inner {
-        padding: 2.5rem
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 1.25rem;
-        text-align: center
-      }
-    }
-
-    @media (max-width:600px) {
-      section {
-        padding: 5rem 1.25rem
-      }
-
-      .capabilities-grid,
-      .projects-grid {
-        grid-template-columns: 1fr
-      }
-
-      .hero-stats {
-        gap: 1.25rem
-      }
-
-      .stat-card {
-        padding: 1.5rem 2rem
-      }
-    }
-  
-    /* ── Hero Enhancements ── */
     .hero-glow-1, .hero-glow-2 {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: 1;
-      opacity: 0.6;
+      position: absolute; border-radius: 50%; filter: blur(80px); z-index: 1; opacity: 0.6;
       animation: floatOrbs 10s ease-in-out infinite alternate;
     }
-    .hero-glow-1 {
-      width: 400px; height: 400px;
-      background: rgba(37, 99, 235, 0.15); /* Soft primary blue */
-      top: 20%; left: 20%;
-    }
-    .hero-glow-2 {
-      width: 300px; height: 300px;
-      background: rgba(96, 165, 250, 0.1); /* Lighter blue */
-      bottom: 20%; right: 20%;
-      animation-delay: -5s;
-    }
-    @keyframes floatOrbs {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, -50px) scale(1.1); }
-    }
+    .hero-glow-1 { width: 400px; height: 400px; background: rgba(37, 99, 235, 0.15); top: 20%; left: 20%; }
+    .hero-glow-2 { width: 300px; height: 300px; background: rgba(96, 165, 250, 0.1); bottom: 20%; right: 20%; animation-delay: -5s; }
+    @keyframes floatOrbs { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, -50px) scale(1.1); } }
 
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    
     .availability-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(37, 99, 235, 0.05);
-      border: 1px solid rgba(37, 99, 235, 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 2.5rem;
-      animation: fadeInDown 1s ease 0.2s both;
+      display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.1); padding: 0.5rem 1rem; border-radius: 50px;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 2rem;
     }
-    .pulse-dot {
-      width: 8px; height: 8px;
-      background: #10b981; /* Emerald green */
-      border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-      animation: pulseGreen 2s infinite;
-    }
-    @keyframes pulseGreen {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
+    .pulse-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); animation: pulseGreen 2s infinite; }
+    @keyframes pulseGreen { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-      animation: fadeInUp 1s ease 1s both;
+    .hero-title { font-size: 4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary-dark); }
+    .hero-subtitle { font-size: 1.25rem; font-weight: 400; margin-bottom: 2.5rem; color: var(--gray); line-height: 1.8; }
+    
+    .btn-group { display: flex; gap: 1rem; justify-content: center; }
+    .btn {
+      padding: 1rem 2.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; transition: all 0.3s ease; display: inline-block; cursor: pointer; border: none;
     }
-    .hero-btn {
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .hero-btn.primary-btn {
-      background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-    .hero-btn.primary-btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
-    }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3); color: #fff; }
+    .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
+    /* ── MISSION & VISION ── */
+    .mission-section { background: var(--black); }
+    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .mission-box { background: var(--dark); padding: 3rem; border-radius: var(--radius); border: 1px solid var(--dark3); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03); }
+    .mission-list { list-style: none; margin-top: 1.5rem; }
+    .mission-list li { margin-bottom: 0.75rem; font-weight: 500; color: var(--white); display: flex; align-items: center; gap: 0.5rem; }
+    .mission-list li::before { content: "✓"; color: var(--primary); font-weight: bold; }
+
+    /* ── SERVICES / CAPABILITIES ── */
+    .services-section { background: var(--dark); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .service-card {
+      background: var(--black); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--dark3);
+      transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 5px 15px rgba(15, 23, 42, 0.02);
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(15, 23, 42, 0.06); border-color: var(--primary-light); }
+    .service-icon { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; }
+    .service-title { font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary-dark); }
+    .service-desc { font-size: 0.95rem; }
+
+    /* ── STATS ── */
+    .stats-section { background: var(--primary-dark); color: #fff; text-align: center; }
+    .stats-section .section-label, .stats-section h2, .stats-section p { color: #fff; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    .stat-item { padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .stat-number { font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    .stat-label { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 1rem; }
+    .stat-desc { font-size: 0.85rem; opacity: 0.8; line-height: 1.5; margin: 0; }
+
+    /* ── PROCESS ── */
+    .process-section { background: var(--black); }
+    .process-steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .step-card {
+      display: flex; gap: 2rem; background: var(--dark); padding: 3rem; border-radius: var(--radius);
+      border: 1px solid var(--dark3); align-items: center; box-shadow: 0 5px 15px rgba(15, 23, 42, 0.02);
+    }
+    .step-number { font-size: 4rem; font-weight: 700; color: var(--primary); opacity: 0.2; line-height: 1; }
+    .step-content h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--white); }
+
+    /* ── AWARDS ── */
+    .awards-section { background: var(--dark); }
+    .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .award-card { background: var(--black); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--dark3); text-align: center; }
+    .award-year { display: inline-block; background: var(--primary); color: #fff; padding: 0.25rem 1rem; border-radius: 50px; font-weight: 600; margin-bottom: 1rem; font-size: 0.85rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); padding: 3rem 0; text-align: center; border-top: 1px solid var(--dark3); }
+    footer p { margin: 0; font-size: 0.9rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .mission-grid, .awards-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .hero-title { font-size: 2.5rem; }
+      .step-card { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .btn-group { flex-direction: column; }
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- LOCK SCREEN -->
-  <div id="lock-screen">
-    <div class="lock-content">
-      <div class="lock-monogram">AS</div>
-      <div class="lock-divider"></div>
-      <p class="lock-subtitle">Private Portfolio Access Required</p>
-      <form class="lock-form" onsubmit="checkPassword(event)">
-        <label class="lock-label" for="password-input">Enter Access Code</label>
-        <input type="password" id="password-input" placeholder="••••••••••" autocomplete="off" autofocus>
-        <button type="submit" class="lock-btn">Unlock Portfolio</button>
-        <div class="lock-error" id="lock-error">&nbsp;</div>
-      </form>
-    </div>
-  </div>
-
-  <!-- PORTFOLIO -->
-  <div id="portfolio">
-
-    <nav id="main-nav">
-      <div class="nav-logo">AS Dev</div>
+  <!-- NAVIGATION -->
+  <nav id="main-nav">
+    <div class="container nav-inner">
+      <div class="logo">REXO TECH</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#services-projects">Services</a></li>
-        <li><a href="#ecom-projects">E-Commerce</a></li>
-        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#awards">Awards</a></li>
       </ul>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-grid"></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container">
       <div class="hero-content">
-        <p class="hero-eyebrow">Web Development &amp; AI Automation</p>
-        <h1 class="hero-name">Creative <span>Developer</span></h1>
-        <p class="hero-tagline">Engineering Bespoke Digital Experiences</p>
-        <div class="hero-stats">
-          <div class="stat-card"><span class="stat-number">50+</span><span class="stat-label">Projects</span></div>
-          <div class="stat-card"><span class="stat-number">5+</span><span class="stat-label">Years</span></div>
-          <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Countries</span></div>
+        <div class="availability-badge">
+          <span class="pulse-dot"></span> Welcome to Rexo Tech
+        </div>
+        <h1 class="hero-title">Innovating With Excellence For Global Success.</h1>
+        <p class="hero-subtitle">We are committed to pushing the boundaries of technology and maintaining the highest standards of digital excellence in everything we do. Our solutions empower businesses worldwide to scale operations, build robust software systems, and stay ahead in a rapidly evolving digital market. Through automation, creativity, and data engineering, we transform daily business challenges into seamless opportunities.</p>
+        <div class="btn-group">
+          <a href="#services" class="btn btn-primary">View All Services</a>
+          <a href="#process" class="btn btn-outline">Get Started Now</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SERVICE PROJECTS -->
-    <section id="services-projects">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="section-label">Portfolio — Services</p>
-          <h2 class="section-title">Service Websites</h2>
-          <p class="section-subtitle">Custom-built websites for businesses delivering real-world services — from tech
-            consultancies and professional firms to luxury hospitality and enterprise solutions.</p>
+  <!-- MISSION & VISION -->
+  <section id="about" class="mission-section section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-title">Engineered Solutions Built For Business Optimization</h2>
+        <div class="primary-line center"></div>
+        <p style="max-width: 800px; margin: 0 auto 3rem auto;">We are a forward-thinking team committed to harnessing the transformative power of custom software engineering and artificial intelligence. By blending technical innovation, strategic architecture, and scalable technology, we create intelligent solutions that optimize workflows, unlock new opportunities, and empower modern enterprises to thrive.</p>
+      </div>
+
+      <div class="mission-grid">
+        <div class="mission-box">
+          <h3 style="color: var(--primary-dark);">Our Mission for Growth</h3>
+          <p>Our mission is to bridge complex technology with real business operations, transforming workflows into highly automated, smart digital ecosystems.</p>
+          <ul class="mission-list">
+            <li>Software Innovation & Excellence</li>
+            <li>Exceptional Client Partnerships</li>
+            <li>Sustainable Business Automation</li>
+          </ul>
         </div>
-
-        <a href="https://rexotech.io" target="_blank" rel="noopener" class="featured-card reveal">
-          <div class="card-inner">
-            <span class="featured-badge">Featured Project</span>
-            <div class="project-name">Rexotech</div>
-            <span class="project-url">rexotech.io</span>
-            <p class="project-desc">A full-service digital agency offering cutting-edge technology solutions — web
-              development, mobile apps, UI/UX design, and IT consulting for businesses accelerating their digital
-              transformation. Built on a clean, modern Elementor-powered WordPress stack.</p>
-            <span class="featured-cta">Visit Project →</span>
-          </div>
-        </a>
-
-        <div class="projects-grid">
-
-          <a href="https://metaappverse.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Mobile Apps</span>
-              <div class="project-name">MetaAppVerse</div>
-              <span class="project-url">metaappverse.com</span>
-              <p class="project-desc">A premium mobile app development agency specializing in Android, iOS, and
-                cross-platform applications with advanced IoT and AR integrations.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">React Native</span><span class="tech-pill">IoT</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://metawebverse.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Digital Agency</span>
-              <div class="project-name">MetaWebVerse</div>
-              <span class="project-url">metawebverse.com</span>
-              <p class="project-desc">A comprehensive digital agency offering custom WordPress design, SEO optimization,
-                and digital marketing strategies to maximize revenue.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">WordPress</span><span class="tech-pill">SEO</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://www.ecccontrolsandautomation.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Industrial</span>
-              <div class="project-name">ECC Controls &amp; Automation</div>
-              <span class="project-url">ecccontrolsandautomation.com</span>
-              <p class="project-desc">Transforming industrial ideas into reality through hardware integration, remote
-                monitoring services, and embedded system development.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">IoT</span><span class="tech-pill">Automation</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://www.krctotalsolutions.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Tech Consultancy</span>
-              <div class="project-name">KRC Total Solutions</div>
-              <span class="project-url">krctotalsolutions.com</span>
-              <p class="project-desc">A custom-built digital platform delivering end-to-end tech solutions, automation
-                strategies, and enterprise-grade software development.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">Bespoke Software</span><span
-                    class="tech-pill">Automation</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://sensorysentiments.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Creative Services</span>
-              <div class="project-name">Sensory Sentiments</div>
-              <span class="project-url">sensorysentiments.com</span>
-              <p class="project-desc">A creative sensory experience brand delivering curated events, gifting, and
-                lifestyle experiences through emotive storytelling and elegant design.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">WordPress</span><span
-                    class="tech-pill">Elementor</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="http://wjlc-sa.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Legal / Corporate</span>
-              <div class="project-name">WJLC Saudi Arabia</div>
-              <span class="project-url">wjlc-sa.com</span>
-              <p class="project-desc">A professional legal services website for a Saudi Arabian law consultancy —
-                authoritative, trust-building corporate design with full Arabic support.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">WordPress</span><span
-                    class="tech-pill">Bilingual</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://aimsassociates.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Consulting</span>
-              <div class="project-name">AIMS Associates</div>
-              <span class="project-url">aimsassociates.com</span>
-              <p class="project-desc">A management and consulting firm providing strategic advisory, business
-                development, and corporate services across multiple sectors.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">WordPress</span><span
-                    class="tech-pill">Elementor</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://starskylinelimousine.ae" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Luxury Automotive</span>
-              <div class="project-name">Star Skyline Limousine</div>
-              <span class="project-url">starskylinelimousine.ae</span>
-              <p class="project-desc">Dubai's premier chauffeur-driven luxury car rental service — a premium fleet
-                showcase that mirrors the sophistication of the on-ground experience.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">WordPress</span><span
-                    class="tech-pill">UAE</span><span class="tech-pill">Booking</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://hhenterprise.pk" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Fashion / Wholesale</span>
-              <div class="project-name">HH Enterprise</div>
-              <span class="project-url">hhenterprise.pk</span>
-              <p class="project-desc">A Pakistan-based wholesale fashion platform spanning fine jewelry, apparel,
-                accessories, and bags — built on a multi-category architecture with wholesale and retail ordering.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">Custom Platform</span><span
-                    class="tech-pill">Pakistan</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://webstormlab.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Web Agency</span>
-              <div class="project-name">Web Storm Lab</div>
-              <span class="project-url">webstormlab.com</span>
-              <p class="project-desc">A full-service web and app development studio delivering bespoke digital solutions
-                — from cutting-edge web applications to brand-defining creative campaigns.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">WordPress</span><span class="tech-pill">Agency</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
+        <div class="mission-box">
+          <h3 style="color: var(--primary-dark);">Our Vision for the Future</h3>
+          <p>We view AI, intelligent CRM tracking, and custom software infrastructure as the core engines of modern enterprise growth and global efficiency.</p>
+          <ul class="mission-list">
+            <li>Scalable Technology Leadership</li>
+            <li>Transformative Workflow Impact</li>
+            <li>Long-Term Operational Success</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ECOM PROJECTS -->
-    <section id="ecom-projects" class="alt-bg">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="section-label">Portfolio — E-Commerce</p>
-          <h2 class="section-title">Online Stores</h2>
-          <p class="section-subtitle">High-converting Shopify and WooCommerce stores built to drive sales — from toy
-            retailers and organic naturals to preloved tech gadgets and performance sportswear.</p>
+  <!-- SERVICES -->
+  <section id="services" class="services-section section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Capabilities</span>
+        <h2 class="section-title">Delivering Superior Value for Digital Transformation</h2>
+        <div class="primary-line center"></div>
+        <p style="max-width: 800px; margin: 0 auto;">Our approach goes beyond simply implementing generic software—we focus on building tailored digital ecosystems and custom CRMs that adapt, learn, and evolve alongside your daily operations.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3 class="service-title">Seamless AI Workflows</h3>
+          <p class="service-desc">We build intelligent end-to-end automations that replace tedious manual data tasks and streamline your core daily operations.</p>
         </div>
-
-        <a href="https://techmarket.ae" target="_blank" rel="noopener" class="featured-card reveal">
-          <div class="card-inner">
-            <span class="featured-badge">Featured Ecom Store</span>
-            <div class="project-name">Tech Market</div>
-            <span class="project-url">techmarket.ae</span>
-            <p class="project-desc">UAE's trusted destination for preloved and certified pre-owned devices —
-              professionally tested smartphones, laptops, MacBooks, and gadgets with verified quality. Built on Shopify
-              with a sleek, luxury aesthetic for the premium refurbished tech market.</p>
-            <span class="featured-cta">Visit Project →</span>
-          </div>
-        </a>
-
-        <div class="projects-grid">
-
-          <a href="https://www.mytoys.com.pk" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Toys / Children</span>
-              <div class="project-name">My Toys</div>
-              <span class="project-url">mytoys.com.pk</span>
-              <p class="project-desc">Pakistan's trusted toy store offering premium, safe, and educational toys for all
-                ages — a vibrant, family-friendly Shopify experience with fast delivery.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">Pakistan</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://aghanaturals.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Natural / Organic</span>
-              <div class="project-name">Agha Naturals</div>
-              <span class="project-url">aghanaturals.com</span>
-              <p class="project-desc">A premium organic products store focused on clean beauty and wellness — a pure,
-                trust-building Shopify storefront for the natural lifestyle space.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">Organic</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://julhascollection.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Fashion / Apparel</span>
-              <div class="project-name">Julhaas Collection</div>
-              <span class="project-url">julhascollection.com</span>
-              <p class="project-desc">A boutique fashion brand with a curated collection of clothing and accessories —
-                clean, minimal Shopify design that lets the fashion speak for itself.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">Fashion</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://billfishgear.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Outdoor / Performance</span>
-              <div class="project-name">Billfish Gear</div>
-              <span class="project-url">billfishgear.com</span>
-              <p class="project-desc">Leaders in lightweight performance apparel for the most challenging environments —
-                a bold Shopify store with a rugged, outdoor-adventure aesthetic.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">USA</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://trendsquarestore.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Fashion / Trends</span>
-              <div class="project-name">Trend Square Store</div>
-              <span class="project-url">trendsquarestore.com</span>
-              <p class="project-desc">A trend-driven fashion and lifestyle store built for high conversion — a dynamic
-                shopping experience for trend-conscious customers.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">E-Commerce</span><span
-                    class="tech-pill">Fashion</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://padelup.pk" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Sports / Equipment</span>
-              <div class="project-name">Padel Up</div>
-              <span class="project-url">padelup.pk</span>
-              <p class="project-desc">Pakistan's go-to destination for padel rackets, balls, and gear — a specialist
-                sports store serving the country's fast-growing padel community.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">E-Commerce</span><span
-                    class="tech-pill">Pakistan</span></div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://pumpculturellc.com" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="card-inner">
-              <span class="project-tag">Fitness / Lifestyle</span>
-              <div class="project-name">Pump Culture LLC</div>
-              <span class="project-url">pumpculturellc.com</span>
-              <p class="project-desc">A fitness lifestyle brand combining premium gym apparel, supplements, and training
-                culture — an energetic, high-impact online store.</p>
-              <div class="project-footer">
-                <div class="project-tech"><span class="tech-pill">E-Commerce</span><span class="tech-pill">USA</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
+        <div class="service-card">
+          <div class="service-icon">💬</div>
+          <h3 class="service-title">Smart Chat Agents</h3>
+          <p class="service-desc">Deploy conversational, natural language AI chatbots that respond instantly to customer inquiries and drive 24/7 lead capture.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3 class="service-title">Tailored CRM Frameworks</h3>
+          <p class="service-desc">Centralize your customer pipelines, track critical sales data, and manage client communications from a single, unified database dashboard.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3 class="service-title">Scalable Architectures</h3>
+          <p class="service-desc">From secure web portals to custom internal applications, we engineer secure backend technology tailored directly around your brand.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CAPABILITIES -->
-    <section id="capabilities">
-      <div class="container">
-        <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto">
-          <p class="section-label">What We Do</p>
-          <h2 class="section-title">Core Capabilities</h2>
-          <p class="section-subtitle" style="margin:0 auto">A full suite of digital services delivered with precision,
-            creativity, and commercial acumen.</p>
+  <!-- STATS -->
+  <section class="stats-section section-padding">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">40%+</div>
+          <div class="stat-label">Hours Saved Weekly</div>
+          <p class="stat-desc">Drastically reduced repetitive administrative labor for our enterprise clients through automated business logic.</p>
         </div>
+        <div class="stat-item">
+          <div class="stat-number">97%</div>
+          <div class="stat-label">Client Satisfaction</div>
+          <p class="stat-desc">Proudly maintaining an elite satisfaction rate across all custom software builds and automated system configurations.</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">45%</div>
+          <div class="stat-label">Conversion Rate</div>
+          <p class="stat-desc">Cut down operational overhead significantly by automating high-volume customer inquiries with intelligent virtual assistants.</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Completed Deployments</div>
+          <p class="stat-desc">Successfully engineered, tested, and shipped secure custom data pipelines and CRM tools across various business sectors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="capabilities-grid reveal">
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <div class="capability-title">Web Development</div>
-            <p class="capability-desc">Pixel-perfect, responsive websites built on WordPress, Shopify, and custom
-              stacks, with advanced API integrations.</p>
+  <!-- PROCESS -->
+  <section id="process" class="process-section section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Our Process</span>
+        <h2 class="section-title">A Streamlined Process For Seamless Digital Transformation</h2>
+        <div class="primary-line center"></div>
+        <p style="max-width: 800px; margin: 0 auto;">Engineering Success From Start To Finish. We follow a structured, agile methodology to design, build, and deploy high-performance software systems tailored to your business goals.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Consultation & Discovery</h3>
+            <p>We dive deep into your operational bottlenecks to analyze manual workflows and pinpoint exactly where automation, a custom CRM, or AI tools can drive maximum growth.</p>
           </div>
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
-            </div>
-            <div class="capability-title">E-Commerce Architecture</div>
-            <p class="capability-desc">Bespoke Shopify Liquid themes, payment gateways, and advanced Klaviyo automations
-              to maximize retention and conversion.</p>
-          </div>
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-              </svg>
-            </div>
-            <div class="capability-title">AI &amp; Chatbots</div>
-            <p class="capability-desc">Intelligent Python-based WhatsApp chatbots via the Business API, plus LLM
-              workflows for business automation.</p>
-          </div>
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div class="capability-title">Performance Optimization</div>
-            <p class="capability-desc">Enhancing digital storefronts through clean, high-conversion technical
-              infrastructure and rigorous performance testing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Custom Tech Architecture</h3>
+            <p>Our engineering team designs a secure blueprint for your custom software, maps out data schemas for your CRM, and plans intelligent conversational logic for your AI chatbot.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="alt-bg">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-text reveal">
-            <p class="section-label">About Us</p>
-            <h2 class="section-title">Bridging Complex Backend Logic &amp; Seamless UX</h2>
-            <div class="blue-line"></div>
-            <p>We are a high-impact team specializing in <strong>e-commerce architecture</strong> and <strong>AI-driven
-                automation</strong>.</p>
-            <p>We engineer bespoke <strong>Shopify Liquid themes</strong> and custom <strong>WordPress/PHP
-                solutions</strong> from the ground up, bridging the gap between complex backend logic and seamless UX
-              through Python-based API integrations and intelligent WhatsApp chatbots built on the Business API.</p>
-            <p>By leveraging advanced prompt engineering and <strong>LLM workflows</strong>, we automate high-level
-              business processes and scale digital storefronts through clean, high-conversion technical infrastructure.
-            </p>
-          </div>
-          <div class="about-skills reveal">
-            <span class="skill-tag">Shopify Custom Liquid</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">HTML5 / CSS3</span>
-            <span class="skill-tag">WhatsApp Chatbot</span>
-            <span class="skill-tag">Prompt Engineering</span>
-            <span class="skill-tag">API Integrations</span>
-            <span class="skill-tag">WordPress / PHP</span>
-          </div>
+  <!-- AWARDS -->
+  <section id="awards" class="awards-section section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Recognition</span>
+        <h2 class="section-title">Awards & Achievements</h2>
+        <div class="primary-line center"></div>
+      </div>
+      <div class="awards-grid">
+        <div class="award-card">
+          <span class="award-year">2024</span>
+          <h3 style="color: var(--primary-dark);">Best SaaS AI Solution Award</h3>
+          <p>Awarded for delivering scalable, secure multi-tenant AI infrastructure for SaaS companies.</p>
+        </div>
+        <div class="award-card">
+          <span class="award-year">2025</span>
+          <h3 style="color: var(--primary-dark);">Tech for Good Recognition</h3>
+          <p>Celebrated for applying AI to create positive social and environmental impact.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="logo">AS Dev</div>
-      <p>© 2026 Asher Sajjad. All Rights Reserved.</p>
-    </footer>
-
-  </div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="logo" style="margin-bottom: 1rem;">REXO TECH</div>
+      <p>© 2026 Rexo Tech. Innovating With Excellence. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <script>
-    /* ── Password Gate ── */
-    const PASSWORD = 'Random4321';
-
-    function checkPassword(e) {
-      e.preventDefault();
-      const input = document.getElementById('password-input');
-      const error = document.getElementById('lock-error');
-
-      if (input.value.trim() === PASSWORD) {
-        document.getElementById('lock-screen').classList.add('hidden');
-        const portfolio = document.getElementById('portfolio');
-        portfolio.style.display = 'block';
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          portfolio.classList.add('visible');
-          initReveal();
-          init3DTilt();
-        }));
-      } else {
-        error.textContent = 'Incorrect access code. Please try again.';
-        input.value = '';
-        input.focus();
-        input.style.animation = 'none';
-        requestAnimationFrame(() => { input.style.animation = 'shake 0.4s ease'; });
-        setTimeout(() => { error.textContent = '\u00a0'; }, 3000);
-      }
-    }
-
-    /* ── Scroll Reveal ── */
-    function initReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('in-view'), (i % 3) * 120);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    }
-
-    /* ── 3D Card Tilt ── */
-    function init3DTilt() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      document.querySelectorAll('.project-card, .featured-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const r = card.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          const y = (e.clientY - r.top) / r.height - 0.5;
-          card.style.transform =
-            `perspective(800px) rotateY(${x * 15}deg) rotateX(${-y * 15}deg) translateY(-8px)`;
-        });
-        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-      });
-    }
-
     /* ── Nav Scroll Effect ── */
     window.addEventListener('scroll', () => {
       document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
   </script>
-
 </body>
-
 </html>
