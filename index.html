@@ -15,17 +15,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Elegant Blue Theme */
-      --primary:     #3b82f6;      /* Bright Blue */
-      --primary-light: #60a5fa;    /* Light Blue */
-      --primary-dark:  #1e3a8a;    /* Deep Royal Blue */
-      --black:       #050505;
-      --dark:        #0A0A0A;
-      --dark2:       #0f172a;      /* Very dark blue-tinted gray */
-      --dark3:       #1e293b;      /* Dark slate */
-      --white:       #F9FAFB;
-      --gray:        #94a3b8;
-      --gray2:       #64748b;
+      /* Elegant White Theme */
+      --primary:     #2563eb;      /* Bright Blue */
+      --primary-light: #3b82f6;    /* Light Blue */
+      --primary-dark:  #1d4ed8;    /* Deep Royal Blue */
+      --black:       #ffffff;      /* Background becomes white */
+      --dark:        #f8fafc;      /* Sections become off-white */
+      --dark2:       #f1f5f9;      /* Cards become light slate */
+      --dark3:       #e2e8f0;      /* Borders */
+      --white:       #0f172a;      /* Text becomes dark slate */
+      --gray:        #475569;      /* Muted text */
+      --gray2:       #334155;      /* Darker muted text */
       --radius:      8px;
       --transition:  0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -86,7 +86,7 @@
     .lock-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, #0f172a 0%, #050505 70%);
+      background: radial-gradient(ellipse at center, #f1f5f9 0%, #ffffff 70%);
       overflow: hidden;
     }
 
@@ -164,7 +164,7 @@
     }
 
     #password-input {
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(59, 130, 246, 0.3);
       border-radius: var(--radius);
       color: var(--white);
@@ -184,7 +184,7 @@
     #password-input:focus { 
       border-color: var(--primary); 
       box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(255, 255, 255, 0.9);
     }
 
     .lock-btn {
@@ -622,7 +622,7 @@
     }
 
     .skill-tag {
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(59, 130, 246, 0.2);
       border-radius: 20px;
       color: var(--primary-light);
@@ -1090,7 +1090,7 @@
       position: relative;
       z-index: 2;
       padding: 4rem 2rem;
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(59, 130, 246, 0.1);
       border-radius: var(--radius);
       backdrop-filter: blur(10px);
