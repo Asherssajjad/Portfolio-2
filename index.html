@@ -343,7 +343,7 @@
       background: 
         radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
-        linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        radial-gradient(circle at 50% -20%, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
       animation: bgShift 15s ease infinite alternate;
     }
 
@@ -384,12 +384,14 @@
       text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
     }
 
-    .hero-name {
+        .hero-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(4rem, 12vw, 10rem);
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1;
+      font-weight: 600;
+      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
       letter-spacing: 0.02em;
       animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
       position: relative;
@@ -400,12 +402,7 @@
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    .hero-name span { 
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      position: relative;
-    }
+    .hero-name span { color: inherit; }
 
     .hero-tagline {
       font-size: clamp(0.65rem, 1.5vw, 0.8rem);
@@ -1320,205 +1317,83 @@
         <div class="hero-divider"></div>
       </div>
 
-    </section><!-- SERVICES PROJECTS -->
+    </section><!-- PORTFOLIO PROJECTS -->
     <section id="services-projects">
       <div class="container">
         <div class="projects-header reveal">
           <div>
-            <p class="section-label">Portfolio — Services</p>
-            <h2 class="section-title">Service Websites</h2>
-            <p class="section-subtitle">Custom-built websites for businesses delivering real-world services — from tech consultancies and professional firms to luxury hospitality and enterprise solutions.</p>
+            <p class="section-label">Portfolio</p>
+            <h2 class="section-title">Recent Work</h2>
+            <p class="section-subtitle">A collection of custom-built digital platforms, from robust e-commerce solutions to innovative mobile applications.</p>
           </div>
         </div>
 
-        <!-- Featured: Rexotech -->
-        <a href="https://rexotech.io" target="_blank" class="featured-card reveal">
-          <div class="featured-inner">
-            <div>
-              <div class="featured-label">
-                <span class="featured-badge">Featured Project</span>
-              </div>
-              <div class="project-name featured-name">Rexotech</div>
-              <span class="featured-url">rexotech.io</span>
-              <p class="featured-desc">A full-service digital agency offering cutting-edge technology solutions. Rexotech provides web development, mobile app development, UI/UX design, and IT consulting services to businesses looking to accelerate their digital transformation. The website showcases a sophisticated portfolio of enterprise solutions with clean, modern Elementor-powered design.</p>
-              <span class="featured-link-btn">Visit Project →</span>
-            </div>
-          </div>
-        </a>
-
         <div class="projects-grid">
 
-        <!-- Project: MetaAppVerse -->
-        <a href="https://metaappverse.com/" target="_blank" class="project-card reveal">
-          <div class="project-card-inner">
-            <div class="project-content">
+          <!-- MetaAppVerse -->
+          <a href="https://metaappverse.com/" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">App Development</span>
               <div class="project-name">MetaAppVerse</div>
-              <div class="project-tags">
-                <span class="project-tag">Mobile App Development</span>
-                <span class="project-tag">Cross-Platform</span>
-                <span class="project-tag">React Native</span>
+              <span class="project-url">metaappverse.com</span>
+              <p class="project-desc">A premium mobile app development agency specializing in Android, iOS, and cross-platform applications with advanced IoT and AR integrations.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">React Native</span>
+                  <span class="tech-pill">Flutter</span>
+                  <span class="tech-pill">UI/UX</span>
+                </div>
+                <span class="project-arrow">→</span>
               </div>
-              <div class="project-desc">A premium mobile app development agency specializing in Android, iOS, and cross-platform applications with advanced IoT and AR integrations.</div>
             </div>
-            <div class="project-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- Project: MetaWebVerse -->
-        <a href="https://metawebverse.com/" target="_blank" class="project-card reveal">
-          <div class="project-card-inner">
-            <div class="project-content">
+          <!-- MetaWebVerse -->
+          <a href="https://metawebverse.com/" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Digital Marketing</span>
               <div class="project-name">MetaWebVerse</div>
-              <div class="project-tags">
-                <span class="project-tag">WordPress</span>
-                <span class="project-tag">Digital Marketing</span>
-                <span class="project-tag">SEO</span>
+              <span class="project-url">metawebverse.com</span>
+              <p class="project-desc">A comprehensive digital agency offering custom design, SEO optimization, and digital marketing strategies to maximize revenue and brand presence.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">WordPress</span>
+                  <span class="tech-pill">SEO</span>
+                  <span class="tech-pill">Marketing</span>
+                </div>
+                <span class="project-arrow">→</span>
               </div>
-              <div class="project-desc">A comprehensive digital agency offering custom WordPress design, SEO optimization, and digital marketing strategies to maximize revenue.</div>
             </div>
-            <div class="project-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- Project: ECC Controls -->
-        <a href="https://www.ecccontrolsandautomation.com" target="_blank" class="project-card reveal">
-          <div class="project-card-inner">
-            <div class="project-content">
-              <div class="project-name">ECC Controls & Automation</div>
-              <div class="project-tags">
-                <span class="project-tag">Hardware Integration</span>
-                <span class="project-tag">IoT Solutions</span>
-                <span class="project-tag">Industrial Automation</span>
+          <!-- ECC Controls -->
+          <a href="https://www.ecccontrolsandautomation.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Automation & Hardware</span>
+              <div class="project-name">ECC Controls</div>
+              <span class="project-url">ecccontrolsandautomation.com</span>
+              <p class="project-desc">Transforming industrial ideas into reality through hardware integration, remote monitoring services, and embedded system development.</p>
+              <div class="project-footer">
+                <div class="project-tech">
+                  <span class="tech-pill">IoT</span>
+                  <span class="tech-pill">Embedded Systems</span>
+                </div>
+                <span class="project-arrow">→</span>
               </div>
-              <div class="project-desc">Transforming industrial ideas into reality through hardware integration, remote monitoring services, and embedded system development.</div>
             </div>
-            <div class="project-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- Project: KRC Total Solutions -->
-        <a href="https://www.krctotalsolutions.com" target="_blank" class="project-card reveal">
-          <div class="project-card-inner">
-            <div class="project-content">
+          <!-- KRC Total Solutions -->
+          <a href="https://www.krctotalsolutions.com" target="_blank" class="project-card reveal">
+            <div class="project-card-inner">
+              <span class="project-tag">Tech Consultancy</span>
               <div class="project-name">KRC Total Solutions</div>
-              <div class="project-tags">
-                <span class="project-tag">Bespoke Software</span>
-                <span class="project-tag">Tech Consultancy</span>
-                <span class="project-tag">Automation</span>
-              </div>
-              <div class="project-desc">A custom-built digital platform delivering end-to-end tech solutions, automation strategies, and enterprise-grade software development.</div>
-            </div>
-            <div class="project-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </div>
-          </div>
-        </a>
-
-
-          <!-- Sensory Sentiments -->
-          <a href="https://sensorysentiments.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Creative Services</span>
-              <div class="project-name">Sensory Sentiments</div>
-              <span class="project-url">sensorysentiments.com</span>
-              <p class="project-desc">A creative sensory experience brand delivering curated events, gifting, and lifestyle experiences. The website blends emotive storytelling with elegant design to draw visitors into an immersive brand journey focused on premium sensory products and bespoke gifting.</p>
+              <span class="project-url">krctotalsolutions.com</span>
+              <p class="project-desc">A custom-built digital platform delivering end-to-end tech solutions, automation strategies, and enterprise-grade software development for B2B clients.</p>
               <div class="project-footer">
                 <div class="project-tech">
-                  <span class="tech-pill">WordPress</span>
-                  <span class="tech-pill">Elementor</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- WJLC -->
-          <a href="http://wjlc-sa.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Legal / Corporate</span>
-              <div class="project-name">WJLC Saudi Arabia</div>
-              <span class="project-url">wjlc-sa.com</span>
-              <p class="project-desc">A professional legal services website for a Saudi Arabian law consultancy. Delivering authoritative, trust-building design for a firm operating in one of the region's most prestigious legal markets — clean corporate aesthetic with full Arabic language support and professional firm credibility.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">WordPress</span>
-                  <span class="tech-pill">Bilingual</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- AIMS Associates -->
-          <a href="https://aimsassociates.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Professional Services</span>
-              <div class="project-name">AIMS Associates</div>
-              <span class="project-url">aimsassociates.com</span>
-              <p class="project-desc">A professional management and consulting firm providing strategic advisory, business development, and corporate services. AIMS Associates' website conveys credibility and authority, serving clients across multiple sectors with tailored consultancy solutions and expert advisory teams.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">WordPress</span>
-                  <span class="tech-pill">Elementor</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Star Skyline Limousine -->
-          <a href="https://starskylinelimousine.ae" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Luxury Automotive</span>
-              <div class="project-name">Star Skyline Limousine</div>
-              <span class="project-url">starskylinelimousine.ae</span>
-              <p class="project-desc">Dubai's premier chauffeur-driven luxury car rental service. Star Skyline Limousine delivers top-class chauffeured experiences across the UAE. The website showcases their fleet of luxury vehicles with an elegant, premium design that mirrors the sophistication of their on-ground service offering.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">WordPress</span>
-                  <span class="tech-pill">UAE Market</span>
-                  <span class="tech-pill">Booking</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- HH Enterprise -->
-          <a href="https://hhenterprise.pk" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Fashion / Wholesale</span>
-              <div class="project-name">HH Enterprise</div>
-              <span class="project-url">hhenterprise.pk</span>
-              <p class="project-desc">A Pakistan-based wholesale fashion and apparel enterprise platform offering a wide catalog including fine jewelry, women's and men's clothing, accessories, bags, and more. Built on a robust multi-category e-commerce architecture with wholesale and retail ordering capabilities.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">Custom Platform</span>
-                  <span class="tech-pill">Wholesale</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- WebStorm Lab -->
-          <a href="https://webstormlab.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Web Agency</span>
-              <div class="project-name">Web Storm Lab</div>
-              <span class="project-url">webstormlab.com</span>
-              <p class="project-desc">A full-service web and app development studio delivering web excellence across multiple verticals. Web Storm Lab specialises in bespoke digital solutions — from cutting-edge web applications to brand-defining creative campaigns, using a Poppins & Roboto driven clean enterprise aesthetic.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">WordPress</span>
-                  <span class="tech-pill">Digeco Theme</span>
-                  <span class="tech-pill">Agency</span>
+                  <span class="tech-pill">Shopify</span>
+                  <span class="tech-pill">Bespoke Software</span>
                 </div>
                 <span class="project-arrow">→</span>
               </div>
@@ -1529,159 +1404,7 @@
       </div>
     </section>
 
-    <!-- ECOM PROJECTS -->
-    <section id="ecom-projects">
-      <div class="container">
-        <div class="projects-header reveal">
-          <div>
-            <p class="section-label">Portfolio — E-Commerce</p>
-            <h2 class="section-title">Online Stores</h2>
-            <p class="section-subtitle">High-converting Shopify and WooCommerce stores built to drive sales — from toy retailers and organic naturals to preloved tech gadgets and performance sportswear.</p>
-          </div>
-        </div>
-
-        <!-- Featured: TechMarket -->
-        <a href="https://techmarket.ae" target="_blank" class="featured-card reveal">
-          <div class="featured-inner">
-            <div>
-              <div class="featured-label">
-                <span class="featured-badge">Featured Ecom Store</span>
-              </div>
-              <div class="project-name featured-name">Tech Market</div>
-              <span class="featured-url">techmarket.ae</span>
-              <p class="featured-desc">UAE's trusted destination for preloved and certified pre-owned devices. Tech Market offers professionally tested smartphones, laptops, MacBooks, Surface Pros, and gadgets — all with verified quality and certified performance. Built on Shopify with a sleek, luxury aesthetic perfectly matching the premium refurbished tech space in the UAE market.</p>
-              <span class="featured-link-btn">Visit Project →</span>
-            </div>
-          </div>
-        </a>
-
-        <div class="projects-grid">
-
-          <!-- MyToys -->
-          <a href="https://www.mytoys.com.pk" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Toys / Children</span>
-              <div class="project-name">My Toys</div>
-              <span class="project-url">mytoys.com.pk</span>
-              <p class="project-desc">Pakistan's trusted toy store offering premium, safe, and educational toys for all ages. MyToys delivers a vibrant, family-friendly Shopify experience with fast delivery and quality guarantees — built around the Fredoka and Inter font combination for a playful yet professional look.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">Shopify</span>
-                  <span class="tech-pill">Pakistan</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Agha Naturals -->
-          <a href="https://aghanaturals.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Natural / Organic</span>
-              <div class="project-name">Agha Naturals</div>
-              <span class="project-url">aghanaturals.com</span>
-              <p class="project-desc">A premium organic natural products store focused on clean beauty, wellness, and organic lifestyle products. Agha Naturals offers a curated selection of natural remedies and organic goods with a clean, pure Shopify storefront that communicates authenticity and trust in the natural products space.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">Shopify</span>
-                  <span class="tech-pill">Organic</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Julhas Collection -->
-          <a href="https://julhascollection.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Fashion / Apparel</span>
-              <div class="project-name">Julhaas Collection</div>
-              <span class="project-url">julhascollection.com</span>
-              <p class="project-desc">A boutique fashion and apparel brand offering a curated collection of clothing and accessories. Julhaas Collection's Shopify store presents a clean, minimal aesthetic with elegant typography (Helvetica/Arial) that lets the fashion speak for itself — ideal for a discerning clientele.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">Shopify</span>
-                  <span class="tech-pill">Fashion</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Billfish Gear -->
-          <a href="https://billfishgear.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Outdoor / Performance</span>
-              <div class="project-name">Billfish Gear</div>
-              <span class="project-url">billfishgear.com</span>
-              <p class="project-desc">Leaders in lightweight performance apparel designed for the most challenging environments — on and off the water. Billfish Gear delivers moisture-wicking, technical performance clothing via a bold Shopify store with Montserrat typography and a rugged, outdoor-adventure aesthetic aimed at serious sportspeople.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">Shopify</span>
-                  <span class="tech-pill">Performance</span>
-                  <span class="tech-pill">USA</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Trend Square Store -->
-          <a href="https://trendsquarestore.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Fashion / Trends</span>
-              <div class="project-name">Trend Square Store</div>
-              <span class="project-url">trendsquarestore.com</span>
-              <p class="project-desc">A trend-driven fashion and lifestyle store keeping shoppers at the cutting edge of style. Trend Square offers a dynamic shopping experience with a wide range of on-trend clothing, accessories, and lifestyle products — built for high conversion and trend-conscious customers.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">E-Commerce</span>
-                  <span class="tech-pill">Fashion</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Padel Up -->
-          <a href="https://padelup.pk" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Sports / Equipment</span>
-              <div class="project-name">Padel Up</div>
-              <span class="project-url">padelup.pk</span>
-              <p class="project-desc">Pakistan's go-to destination for padel tennis equipment and accessories. Padel Up serves the rapidly growing padel community in Pakistan with rackets, balls, and gear from leading brands — a specialist sports e-commerce store built for enthusiasts at every level of the game.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">E-Commerce</span>
-                  <span class="tech-pill">Sports</span>
-                  <span class="tech-pill">Pakistan</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Pump Culture LLC -->
-          <a href="https://pumpculturellc.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Fitness / Lifestyle</span>
-              <div class="project-name">Pump Culture LLC</div>
-              <span class="project-url">pumpculturellc.com</span>
-              <p class="project-desc">A fitness lifestyle brand combining premium gym apparel, supplements, and training culture. Pump Culture LLC celebrates the pursuit of peak performance — building a community around fitness, strength, and a relentless dedication to progress through an energetic, high-impact online store.</p>
-              <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">E-Commerce</span>
-                  <span class="tech-pill">Fitness</span>
-                  <span class="tech-pill">USA</span>
-                </div>
-                <span class="project-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
+    
 
     <!-- CAPABILITIES -->
     <section id="capabilities">
@@ -1733,7 +1456,9 @@
       </div>
     </section>
 
-<!-- ABOUT & EXPERIENCE -->
+
+
+    <!-- ABOUT & EXPERIENCE -->
     <section id="about">
       <div class="container">
         <div class="about-grid">
