@@ -184,7 +184,7 @@
     #password-input:focus { 
       border-color: var(--primary); 
       box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-      background: rgba(255, 255, 255, 0.9);
+      background: #f8fafc;
     }
 
     .lock-btn {
@@ -263,12 +263,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(5,5,5,0.95), transparent);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.95), transparent);
       transition: all 0.4s ease;
     }
 
     nav.scrolled {
-      background: rgba(5,5,5,0.85);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(59, 130, 246, 0.1);
       padding: 1rem 3rem;
@@ -341,9 +341,9 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-        linear-gradient(180deg, #050505 0%, #0A0A0A 100%);
+        radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
       animation: bgShift 15s ease infinite alternate;
     }
 
@@ -439,7 +439,7 @@
     .stat-item { 
       text-align: center; 
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      background: rgba(255, 255, 255, 0.6);
+      background: #ffffff;
       border: 1px solid rgba(59, 130, 246, 0.15);
       border-radius: 16px;
       padding: 2.5rem 3.5rem;
@@ -451,7 +451,7 @@
       transform: translateY(-10px) scale(1.02);
       border-color: rgba(59, 130, 246, 0.4);
       box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-      background: rgba(255, 255, 255, 0.9);
+      background: #f8fafc;
     }
     
     .stat-item:hover {
