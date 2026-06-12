@@ -1,146 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Portfolio — Web Developer</title>
-  <meta name="description" content="Digital Portfolio — Premium Web Development Portfolio. Expert in engineering bespoke Shopify Liquid themes and custom WordPress/PHP solutions.">
+  <title>AS Dev — Web Developer Portfolio</title>
+  <meta name="description"
+    content="Premium web development portfolio. Bespoke Shopify Liquid themes, WordPress/PHP solutions, and AI automation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
-    /* ──────────────────────────────────────────────────────────
-       ROOT & RESET
-    ────────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
     :root {
-      /* Elegant White Theme */
-      --primary:     #2563eb;      /* Bright Blue */
-      --primary-light: #3b82f6;    /* Light Blue */
-      --primary-dark:  #1d4ed8;    /* Deep Royal Blue */
-      --black:       #f8fafc;      /* Background becomes white */
-      --dark:        #f1f5f9;      /* Sections become off-white */
-      --dark2:       #e2e8f0;      /* Cards become light slate */
-      --dark3:       #cbd5e1;      /* Borders */
-      --white:       #0f172a;      /* Text becomes dark slate */
-      --gray:        #475569;      /* Muted text */
-      --gray2:       #334155;      /* Darker muted text */
-      --radius:      8px;
-      --transition:  0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      --bg: #0a0a0f;
+      --bg2: #0e0e16;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(59, 130, 246, 0.15);
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --white: #e8eaf0;
+      --gray: #8b93a7;
+      --gray2: #5a6175;
+      --radius: 10px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    html { font-size: 16px; scroll-behavior: smooth; }
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth
+    }
 
     body {
-      background: var(--black);
+      background: var(--bg);
       color: var(--white);
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.7;
       overflow-x: hidden;
-      cursor: default;
-    }
-    
-    /* Custom Cursor Element (Optional modern touch) */
-    .cursor-glow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      transition: opacity 0.3s;
-      opacity: 0;
     }
 
-    body:hover .cursor-glow {
-      opacity: 1;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       LOCK SCREEN
-    ────────────────────────────────────────────────────────── */
+    /* ── LOCK SCREEN ─────────────────────────────── */
     #lock-screen {
       position: fixed;
       inset: 0;
-      background: var(--black);
+      z-index: 999;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      background: radial-gradient(ellipse at center, #10101c 0%, var(--bg) 70%);
+      transition: opacity .8s ease, visibility .8s ease;
     }
 
     #lock-screen.hidden {
       opacity: 0;
       visibility: hidden;
-      pointer-events: none;
+      pointer-events: none
     }
 
-    .lock-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, #e2e8f0 0%, #f8fafc 70%);
-      overflow: hidden;
-    }
-
-    .lock-bg::before {
+    #lock-screen::before {
       content: '';
       position: absolute;
       inset: -50%;
-      background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.05) 30deg, transparent 60deg);
-      animation: rotateGlow 20s linear infinite;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.08) 30deg, transparent 60deg);
+      animation: spin 20s linear infinite;
     }
 
-    @keyframes rotateGlow {
-      to { transform: rotate(360deg); }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
     }
 
     .lock-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem
     }
 
     .lock-monogram {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 10vw, 8rem);
-      font-weight: 300;
-      color: var(--primary);
-      letter-spacing: 0.2em;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 400;
+      color: var(--blue-light);
+      letter-spacing: .2em;
       line-height: 1;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 60px rgba(59, 130, 246, 0.4);
-      animation: fadeInDown 1s ease forwards, pulseGlow 4s infinite alternate;
+      text-shadow: 0 0 60px rgba(59, 130, 246, .5);
+      animation: fadeDown 1s var(--ease) both, glow 4s infinite alternate;
     }
 
-    @keyframes pulseGlow {
-      from { text-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
-      to { text-shadow: 0 0 70px rgba(59, 130, 246, 0.6); }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 30px rgba(59, 130, 246, .3)
+      }
+
+      to {
+        text-shadow: 0 0 80px rgba(59, 130, 246, .7)
+      }
     }
 
     .lock-divider {
       width: 80px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
       margin: 1.5rem auto;
-      animation: fadeIn 1.2s ease forwards;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
     }
 
     .lock-subtitle {
-      font-size: 0.65rem;
-      letter-spacing: 0.45em;
+      font-size: .65rem;
+      letter-spacing: .45em;
       text-transform: uppercase;
       color: var(--gray);
       margin-bottom: 3rem;
-      animation: fadeIn 1.4s ease forwards;
     }
 
     .lock-form {
@@ -148,59 +129,55 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      animation: fadeInUp 1.6s ease forwards;
+      animation: fadeUp 1.4s var(--ease) both
     }
 
     .lock-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
+      font-size: .6rem;
+      letter-spacing: .3em;
       text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 0.25rem;
-    }
-
-    .lock-input-wrap {
-      position: relative;
+      color: var(--gray)
     }
 
     #password-input {
-      background: rgba(248, 250, 252, 0.5);
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      width: 280px;
+      padding: .85rem 1.25rem;
+      text-align: center;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       color: var(--white);
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      padding: 0.85rem 3rem 0.85rem 1.25rem;
-      width: 280px;
+      font-size: .9rem;
+      letter-spacing: .15em;
       outline: none;
-      transition: all 0.3s;
-      text-align: center;
-      backdrop-filter: blur(5px);
+      transition: .3s;
     }
 
-    #password-input::placeholder { color: var(--gray2); letter-spacing: 0.1em; }
-    #password-input:focus { 
-      border-color: var(--primary); 
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-      background: #f8fafc;
+    #password-input::placeholder {
+      color: var(--gray2)
+    }
+
+    #password-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 20px rgba(59, 130, 246, .25)
     }
 
     .lock-btn {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      width: 280px;
+      padding: .9rem 2.5rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #1d4ed8, var(--blue));
       border: none;
       border-radius: var(--radius);
-      color: var(--white);
-      cursor: pointer;
+      color: #fff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.6rem;
+      font-size: .6rem;
       font-weight: 500;
-      letter-spacing: 0.4em;
-      padding: 0.9rem 2.5rem;
+      letter-spacing: .4em;
       text-transform: uppercase;
-      transition: var(--transition);
-      width: 280px;
+      transition: .4s var(--ease);
       position: relative;
       overflow: hidden;
     }
@@ -208,98 +185,110 @@
     .lock-btn::after {
       content: '';
       position: absolute;
-      top: 0; left: -100%;
-      width: 50%; height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, .25), transparent);
       transform: skewX(-20deg);
-      transition: 0.5s;
+      transition: .5s;
     }
 
     .lock-btn:hover::after {
-      left: 150%;
+      left: 150%
     }
 
     .lock-btn:hover {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, .4)
     }
 
     .lock-error {
       color: #ef4444;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: .65rem;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      height: 1rem;
-      transition: opacity 0.3s;
+      height: 1rem
     }
 
-    /* ──────────────────────────────────────────────────────────
-       MAIN PORTFOLIO (hidden until unlocked)
-    ────────────────────────────────────────────────────────── */
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      20% {
+        transform: translateX(-8px)
+      }
+
+      40% {
+        transform: translateX(8px)
+      }
+
+      60% {
+        transform: translateX(-6px)
+      }
+
+      80% {
+        transform: translateX(6px)
+      }
+    }
+
+    /* ── PORTFOLIO SHELL ─────────────────────────── */
     #portfolio {
       display: none;
       opacity: 0;
-      transition: opacity 1s ease;
-      position: relative;
-      z-index: 2;
+      transition: opacity 1s ease
     }
 
     #portfolio.visible {
       display: block;
-      opacity: 1;
+      opacity: 1
     }
 
-    /* ──────────────────────────────────────────────────────────
-       NAVIGATION
-    ────────────────────────────────────────────────────────── */
+    /* ── NAV ─────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 1.5rem 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.95), transparent);
-      transition: all 0.4s ease;
+      padding: 1.5rem 3rem;
+      transition: .4s ease;
     }
 
     nav.scrolled {
-      background: rgba(248,250,252,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(59, 130, 246, 0.1);
       padding: 1rem 3rem;
+      background: rgba(10, 10, 15, .7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
     }
 
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      background: linear-gradient(to right, var(--white), var(--primary-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 0.15em;
-      position: relative;
+      font-size: 1.4rem;
+      letter-spacing: .15em;
+      color: var(--blue-light);
     }
 
     .nav-links {
       display: flex;
       gap: 2.5rem;
-      list-style: none;
+      list-style: none
     }
 
     .nav-links a {
       color: var(--gray);
       text-decoration: none;
-      font-size: 0.6rem;
-      letter-spacing: 0.35em;
+      font-size: .6rem;
+      letter-spacing: .35em;
       text-transform: uppercase;
-      transition: color 0.3s, transform 0.3s;
-      display: inline-block;
       position: relative;
+      transition: color .3s;
     }
 
     .nav-links a::after {
@@ -307,997 +296,757 @@
       position: absolute;
       bottom: -4px;
       left: 0;
-      width: 0%;
+      width: 0;
       height: 1px;
-      background: var(--primary);
-      transition: width 0.3s ease;
+      background: var(--blue);
+      transition: width .3s;
     }
 
-    .nav-links a:hover { 
-      color: var(--primary-light); 
-      transform: translateY(-1px);
+    .nav-links a:hover {
+      color: var(--blue-light)
     }
-    
+
     .nav-links a:hover::after {
-      width: 100%;
+      width: 100%
     }
 
-    /* ──────────────────────────────────────────────────────────
-       HERO
-    ────────────────────────────────────────────────────────── */
+    /* ── HERO ────────────────────────────────────── */
     .hero {
       min-height: 100vh;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      padding: 2rem;
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: 
-        radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 50% -20%, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
-      animation: bgShift 15s ease infinite alternate;
-    }
-
-    @keyframes bgShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+      background:
+        radial-gradient(ellipse at 20% 40%, rgba(37, 99, 235, .12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 60%, rgba(37, 99, 235, .08) 0%, transparent 50%);
     }
 
     .hero-grid {
       position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      left: -20%;
+      right: -20%;
+      bottom: -10%;
+      height: 60%;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, .15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, .15) 1px, transparent 1px);
       background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-      transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
-      animation: gridMove 20s linear infinite;
+      transform: perspective(500px) rotateX(60deg);
+      mask-image: linear-gradient(to top, black 30%, transparent 90%);
+      -webkit-mask-image: linear-gradient(to top, black 30%, transparent 90%);
+      animation: gridMove 3s linear infinite;
     }
 
     @keyframes gridMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 60px; }
+      from {
+        background-position: 0 0
+      }
+
+      to {
+        background-position: 0 60px
+      }
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 2
     }
 
     .hero-eyebrow {
-      font-size: 0.6rem;
-      letter-spacing: 0.6em;
+      font-size: .6rem;
+      letter-spacing: .6em;
       text-transform: uppercase;
-      color: var(--primary);
+      color: var(--blue-light);
       margin-bottom: 2rem;
-      animation: fadeInDown 1s ease 0.2s both;
-      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+      text-shadow: 0 0 12px rgba(59, 130, 246, .5);
+      animation: fadeDown 1s var(--ease) .2s both;
     }
 
-        .hero-name {
+    .hero-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 12vw, 10rem);
-      font-weight: 600;
-      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+      font-size: clamp(3.5rem, 11vw, 9rem);
+      font-weight: 400;
+      line-height: 1;
+      animation: heroIn 1.2s var(--ease) .4s both;
+    }
+
+    .hero-name span {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light) 60%, #93c5fd);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-      animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
-      position: relative;
+      color: transparent;
     }
 
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.9) translateY(20px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: scale(.92) translateY(20px)
+      }
 
-    .hero-name span { color: inherit; }
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
 
     .hero-tagline {
-      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-      letter-spacing: 0.5em;
+      font-size: clamp(.6rem, 1.5vw, .75rem);
+      letter-spacing: .5em;
       text-transform: uppercase;
       color: var(--gray);
-      margin: 2rem 0 3rem;
-      animation: fadeIn 1s ease 0.6s both;
-    }
-
-    .hero-divider {
-      width: 150px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      margin: 0 auto 4rem;
-      animation: expandWidth 1.5s ease 0.8s both;
-    }
-
-    @keyframes expandWidth {
-      from { width: 0; opacity: 0; }
-      to { width: 150px; opacity: 1; }
+      margin: 2rem 0 3.5rem;
+      animation: fadeIn 1s ease .7s both;
     }
 
     .hero-stats {
       display: flex;
-      gap: 5rem;
+      gap: 2rem;
       justify-content: center;
-      animation: fadeInUp 1s ease 1s both;
+      flex-wrap: wrap;
+      animation: fadeUp 1s var(--ease) .9s both;
     }
 
-    .stat-item { 
-      text-align: center; 
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      background: #f8fafc;
-      border: 1px solid rgba(59, 130, 246, 0.15);
-      border-radius: 16px;
-      padding: 2.5rem 3.5rem;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    .stat-card {
+      padding: 2rem 3rem;
+      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      transition: .4s var(--ease);
     }
-    
-    .stat-item:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: rgba(59, 130, 246, 0.4);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-      background: #f8fafc;
-    }
-    
-    .stat-item:hover {
-      transform: translateY(-5px);
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(59, 130, 246, .4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .5), 0 0 30px rgba(59, 130, 246, .12);
     }
 
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--primary);
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--blue-light);
       display: block;
       line-height: 1;
-      text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      text-shadow: 0 0 25px rgba(59, 130, 246, .4);
     }
 
     .stat-label {
-      font-size: 0.55rem;
-      letter-spacing: 0.4em;
+      font-size: .55rem;
+      letter-spacing: .4em;
       text-transform: uppercase;
       color: var(--gray);
-      margin-top: 0.6rem;
+      margin-top: .6rem;
       display: block;
     }
 
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0.6;
-      animation: bounce 2s infinite, fadeIn 1s ease 1.5s both;
-      cursor: pointer;
-    }
-    
-    .scroll-indicator:hover {
-      opacity: 1;
-    }
-
-    .scroll-indicator span {
-      font-size: 0.5rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--primary);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 50px;
-      background: linear-gradient(to bottom, var(--primary), transparent);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .scroll-line::after {
-      content: '';
-      position: absolute;
-      top: -50px;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: linear-gradient(to bottom, transparent, var(--white), transparent);
-      animation: scrollDrop 2s infinite;
-    }
-
-    @keyframes scrollDrop {
-      0% { top: -50px; }
-      100% { top: 50px; }
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       SECTION COMMONS
-    ────────────────────────────────────────────────────────── */
+    /* ── SECTION COMMONS ─────────────────────────── */
     section {
       padding: 8rem 2rem;
-      position: relative;
+      position: relative
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      z-index: 2;
+      z-index: 2
+    }
+
+    .alt-bg {
+      background: var(--bg2)
     }
 
     .section-label {
-      font-size: 0.55rem;
-      letter-spacing: 0.6em;
-      text-transform: uppercase;
-      color: var(--primary-light);
-      margin-bottom: 1.5rem;
       display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: rgba(59, 130, 246, 0.1);
+      margin-bottom: 1.5rem;
+      padding: .3rem .9rem;
+      font-size: .55rem;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+      color: var(--blue-light);
       border-radius: 20px;
-      border: 1px solid rgba(59, 130, 246, 0.2);
+      background: rgba(59, 130, 246, .08);
+      border: 1px solid var(--glass-border);
     }
 
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 300;
-      color: var(--white);
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-weight: 400;
       line-height: 1.1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .section-subtitle {
-      font-size: 0.9rem;
+      font-size: .9rem;
       color: var(--gray);
-      max-width: 600px;
-      line-height: 1.8;
+      max-width: 620px;
+      line-height: 1.9
     }
 
-    .primary-line {
-      width: 80px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary), transparent);
-      margin: 2rem 0;
+    .section-head {
+      margin-bottom: 4rem
     }
 
-    /* ──────────────────────────────────────────────────────────
-       ABOUT & EXPERIENCE
-    ────────────────────────────────────────────────────────── */
-    #about {
-      background: var(--dark2);
-      position: relative;
-    }
-    
-    #about::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 50vw; height: 50vw;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 2;
-      margin-bottom: 1.5rem;
-    }
-
-    .about-text p strong {
-      color: var(--white);
-      font-weight: 500;
-      border-bottom: 1px solid rgba(59, 130, 246, 0.4);
-    }
-
-    .about-skills {
+    /* ── CARDS (shared 3D / glass) ───────────────── */
+    .project-card,
+    .featured-card {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 2.5rem;
-    }
-
-    .skill-tag {
-      background: rgba(248, 250, 252, 0.5);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 20px;
-      color: var(--primary-light);
-      font-size: 0.55rem;
-      letter-spacing: 0.25em;
-      padding: 0.6rem 1.2rem;
-      text-transform: uppercase;
-      transition: var(--transition);
-      backdrop-filter: blur(4px);
-    }
-
-    .skill-tag:hover {
-      background: var(--primary);
-      color: var(--white);
-      border-color: var(--primary-light);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-    }
-
-    .about-right {
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      overflow: hidden;
       position: relative;
-    }
-    
-    .timeline-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      color: var(--white);
-      margin-bottom: 3rem;
-      font-weight: 300;
+      transition: transform .15s ease-out, border-color .4s, box-shadow .4s;
+      will-change: transform;
     }
 
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-      border-left: 1px solid rgba(59, 130, 246, 0.2);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-      transition: transform 0.3s;
-    }
-
-    .timeline-item:hover {
-      transform: translateX(10px);
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2.35rem;
-      top: 0.3rem;
-      width: 0.7rem;
-      height: 0.7rem;
-      border-radius: 50%;
-      background: var(--dark2);
-      border: 2px solid var(--primary);
-      transition: var(--transition);
-    }
-    
-    .timeline-item:hover::before {
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    .timeline-date {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--primary-light);
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-      display: block;
-    }
-
-    .timeline-company {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      color: var(--white);
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .timeline-role {
-      font-size: 0.8rem;
-      color: var(--gray);
-      margin-bottom: 0.8rem;
-      display: block;
-      font-style: italic;
-    }
-
-    .timeline-desc {
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.8;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       PROJECTS — SERVICES
-    ────────────────────────────────────────────────────────── */
-    #services-projects {
-      background: var(--black);
-    }
-
-    .projects-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 4rem;
+    .project-card:hover,
+    .featured-card:hover {
+      border-color: rgba(59, 130, 246, .45);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, .7), 0 0 40px rgba(59, 130, 246, .1);
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
       gap: 2rem;
     }
 
-    .project-card {
-      position: relative;
-      background: var(--dark2);
-      border: 1px solid rgba(59, 130, 246, 0.1);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: var(--transition);
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.06), transparent 40%);
-      opacity: 0;
-      transition: opacity 0.5s;
-      z-index: 0;
-    }
-
-    .project-card:hover::before { opacity: 1; }
-
-    .project-card:hover {
-      border-color: rgba(59, 130, 246, 0.3);
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(59, 130, 246, 0.2);
-    }
-
-    .project-card-inner {
+    .card-inner {
       padding: 2.5rem;
-      position: relative;
-      z-index: 1;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex-grow: 1
     }
 
     .project-tag {
-      display: inline-block;
-      font-size: 0.5rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--primary-light);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      margin-bottom: 1.5rem;
       align-self: flex-start;
-      background: rgba(59,130,246,0.05);
+      margin-bottom: 1.4rem;
+      padding: .3rem .8rem;
+      font-size: .5rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      border: 1px solid rgba(59, 130, 246, .3);
+      border-radius: 20px;
+      background: rgba(59, 130, 246, .06);
     }
 
     .project-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
       font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.5rem;
       line-height: 1.2;
-      transition: color 0.3s;
+      margin-bottom: .4rem;
+      transition: color .3s;
     }
-    
-    .project-card:hover .project-name {
-      color: var(--primary-light);
+
+    .project-card:hover .project-name,
+    .featured-card:hover .project-name {
+      color: var(--blue-light)
     }
 
     .project-url {
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--gray2);
-      letter-spacing: 0.1em;
-      margin-bottom: 1.5rem;
-      display: block;
+      letter-spacing: .1em;
+      margin-bottom: 1.25rem;
+      display: block
     }
 
     .project-desc {
-      font-size: 0.85rem;
+      font-size: .85rem;
       color: var(--gray);
       line-height: 1.8;
       margin-bottom: 1.5rem;
-      flex-grow: 1;
+      flex-grow: 1
     }
 
     .project-footer {
       margin-top: auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(59, 130, 246, 0.1);
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(59, 130, 246, .1);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .project-tech {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: .5rem
     }
 
     .tech-pill {
-      font-size: 0.5rem;
-      letter-spacing: 0.15em;
+      font-size: .5rem;
+      letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--gray);
-      background: rgba(255,255,255,0.03);
-      padding: 0.3rem 0.7rem;
-      border-radius: 2px;
+      background: rgba(255, 255, 255, .04);
+      padding: .3rem .7rem;
+      border-radius: 3px;
     }
 
     .project-arrow {
-      color: var(--primary);
-      font-size: 1.2rem;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(59,130,246,0.1);
+      color: var(--blue-light);
+      background: rgba(59, 130, 246, .1);
+      transition: .3s var(--ease);
     }
 
     .project-card:hover .project-arrow {
-      transform: translateX(5px);
-      background: var(--primary);
-      color: var(--white);
+      background: var(--blue);
+      color: #fff;
+      transform: translateX(4px)
     }
 
-    /* ──────────────────────────────────────────────────────────
-       PROJECTS — ECOMMERCE
-    ────────────────────────────────────────────────────────── */
-    #ecom-projects {
-      background: var(--dark2);
-      position: relative;
-    }
-    
-    #ecom-projects::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 40vw; height: 40vw;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       FEATURED — large card
-    ────────────────────────────────────────────────────────── */
+    /* Featured card */
     .featured-card {
-      background: linear-gradient(135deg, var(--dark3), var(--dark2));
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: var(--radius);
-      padding: 4rem;
       margin-bottom: 2rem;
-      display: block;
-      transition: var(--transition);
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(135deg, rgba(59, 130, 246, .06), var(--glass) 60%)
     }
 
-    .featured-card::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-      transform: translate(50%, -50%);
-      transition: 0.5s;
-    }
-
-    .featured-card:hover::after {
-      transform: translate(20%, -20%) scale(1.5);
-    }
-
-    .featured-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5), 0 0 0 1px rgba(59, 130, 246, 0.2);
-    }
-
-    .featured-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .featured-label {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+    .featured-card .card-inner {
+      padding: 4rem
     }
 
     .featured-badge {
-      font-size: 0.55rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      background: rgba(59, 130, 246, 0.15);
-      color: var(--primary-light);
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      border: 1px solid rgba(59, 130, 246, 0.3);
-    }
-
-    .featured-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .featured-url {
-      font-size: 0.7rem;
-      color: var(--gray2);
-      letter-spacing: 0.1em;
+      align-self: flex-start;
       margin-bottom: 1.5rem;
-      display: block;
+      padding: .4rem 1rem;
+      font-size: .55rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      border-radius: 20px;
+      background: rgba(59, 130, 246, .12);
+      border: 1px solid rgba(59, 130, 246, .3);
     }
 
-    .featured-desc {
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 1.9;
+    .featured-card .project-name {
+      font-size: 3rem;
+      font-weight: 300
+    }
+
+    .featured-card .project-desc {
       max-width: 800px;
+      font-size: .95rem
     }
 
-    .featured-link-btn {
+    .featured-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-      color: var(--primary-light);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-top: 2rem;
-      transition: gap 0.3s;
+      gap: .8rem;
+      margin-top: 1rem;
+      color: var(--blue-light);
+      font-size: .65rem;
       font-weight: 500;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      transition: gap .3s;
     }
 
-    .featured-card:hover .featured-link-btn { gap: 1.2rem; }
-
-    /* ──────────────────────────────────────────────────────────
-       CAPABILITIES
-    ────────────────────────────────────────────────────────── */
-    #capabilities {
-      background: var(--black);
+    .featured-card:hover .featured-cta {
+      gap: 1.3rem
     }
 
+    /* ── CAPABILITIES ────────────────────────────── */
     .capabilities-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      margin-top: 5rem;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.1);
+      margin-top: 4rem;
+      background: var(--glass-border);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       overflow: hidden;
     }
 
     .capability-item {
-      padding: 4rem 2.5rem;
-      background: var(--black);
-      transition: all 0.4s ease;
+      padding: 3.5rem 2.25rem;
+      background: var(--bg);
       position: relative;
+      transition: .4s ease;
     }
 
     .capability-item::before {
       content: '';
       position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 2px;
-      background: var(--primary);
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--blue);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.4s ease;
+      transition: transform .4s;
     }
 
-    .capability-item:hover { 
-      background: rgba(59, 130, 246, 0.03); 
-      transform: translateY(-10px);
-      z-index: 10;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    .capability-item:hover {
+      background: rgba(59, 130, 246, .04);
+      transform: translateY(-8px);
+      z-index: 5;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .5)
     }
-    
+
     .capability-item:hover::before {
-      transform: scaleX(1);
+      transform: scaleX(1)
     }
 
     .capability-icon {
-      margin-bottom: 2rem;
-      color: var(--primary-light);
-      transition: transform 0.4s;
+      color: var(--blue-light);
+      margin-bottom: 1.75rem;
+      transition: transform .4s
     }
-    
+
     .capability-item:hover .capability-icon {
-      transform: scale(1.1) translateY(-5px);
+      transform: scale(1.1) translateY(-4px)
     }
-    
+
     .capability-icon svg {
-      width: 48px;
-      height: 48px;
-      stroke-width: 1.2;
+      width: 44px;
+      height: 44px;
+      stroke-width: 1.2
     }
 
     .capability-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
-      color: var(--white);
-      margin-bottom: 1rem;
+      margin-bottom: .9rem
     }
 
     .capability-desc {
-      font-size: 0.85rem;
+      font-size: .83rem;
       color: var(--gray);
-      line-height: 1.8;
+      line-height: 1.8
     }
 
-    /* ──────────────────────────────────────────────────────────
-       CONTACT
-    ────────────────────────────────────────────────────────── */
-    #contact {
-      background: var(--dark2);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    #contact::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw; height: 80vw;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
-      pointer-events: none;
+    /* ── ABOUT ───────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: start
     }
 
-    .contact-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      padding: 4rem 2rem;
-      background: rgba(248, 250, 252, 0.5);
-      border: 1px solid rgba(59, 130, 246, 0.1);
-      border-radius: var(--radius);
-      backdrop-filter: blur(10px);
+    .about-text p {
+      font-size: .95rem;
+      color: var(--gray);
+      line-height: 2;
+      margin-bottom: 1.4rem
     }
 
-    .contact-email {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+    .about-text strong {
       color: var(--white);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      margin: 3rem 0;
-      display: inline-block;
-      text-decoration: none;
-      position: relative;
-      transition: color 0.3s;
-    }
-
-    .contact-email::after {
-      content: '';
-      position: absolute;
-      bottom: -10px; left: 0;
-      width: 100%; height: 2px;
-      background: linear-gradient(to right, transparent, var(--primary), transparent);
-      transition: opacity 0.3s;
-    }
-
-    .contact-email:hover { color: var(--primary-light); }
-    .contact-email:hover::after { opacity: 0.5; }
-
-    .contact-cta {
-      margin-top: 3rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      color: var(--white);
-      padding: 1.2rem 3rem;
-      font-size: 0.65rem;
       font-weight: 500;
-      letter-spacing: 0.4em;
+      border-bottom: 1px solid rgba(59, 130, 246, .4)
+    }
+
+    .blue-line {
+      width: 80px;
+      height: 2px;
+      margin: 1.75rem 0 2.25rem;
+      background: linear-gradient(90deg, var(--blue), transparent);
+    }
+
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      align-content: flex-start;
+      padding-top: 4.5rem
+    }
+
+    .skill-tag {
+      padding: .6rem 1.2rem;
+      border-radius: 20px;
+      font-size: .55rem;
+      letter-spacing: .25em;
       text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      transition: all 0.4s;
-      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+      color: var(--blue-light);
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      transition: .4s var(--ease);
     }
 
-    .contact-cta:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    .skill-tag:hover {
+      background: var(--blue);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(59, 130, 246, .35);
     }
 
-    /* ──────────────────────────────────────────────────────────
-       FOOTER
-    ────────────────────────────────────────────────────────── */
+    /* ── FOOTER ──────────────────────────────────── */
     footer {
-      background: var(--black);
-      border-top: 1px solid rgba(59, 130, 246, 0.1);
-      padding: 3rem 4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--glass-border);
     }
 
     footer .logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
-      color: var(--primary);
-      font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: .15em;
+      color: var(--blue-light)
     }
 
     footer p {
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--gray2);
-      letter-spacing: 0.15em;
+      letter-spacing: .15em
     }
 
-    /* ──────────────────────────────────────────────────────────
-       ANIMATIONS FOR SCROLL REVEAL
-    ────────────────────────────────────────────────────────── */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ── ANIMATION HELPERS ───────────────────────── */
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
     }
 
     .reveal {
       opacity: 0;
       transform: translateY(40px);
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 1s var(--ease), transform 1s var(--ease)
     }
 
-    .reveal.in-view, .reveal-left.in-view, .reveal-right.in-view {
+    .reveal.in-view {
       opacity: 1;
-      transform: translate(0, 0);
+      transform: none
     }
 
-    /* ──────────────────────────────────────────────────────────
-       3D SCROLL & HOVER EFFECTS
-    ────────────────────────────────────────────────────────── */
-    .project-card, .featured-card {
-      transform-style: preserve-3d;
-      perspective: 1000px;
+    @media (prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
     }
 
-    .project-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
-      box-shadow: -10px 30px 50px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59, 130, 246, 0.3);
-    }
-    
-    .featured-card:hover {
-      border-color: rgba(59, 130, 246, 0.5);
-      transform: translateY(-5px) scale(1.02) rotateX(1deg) rotateY(-1deg);
-      box-shadow: -15px 40px 60px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(59, 130, 246, 0.3);
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width:900px) {
+
+      nav,
+      nav.scrolled {
+        padding: 1.25rem 1.5rem
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      .about-skills {
+        padding-top: 0
+      }
+
+      .capabilities-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .featured-card .card-inner {
+        padding: 2.5rem
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1.25rem;
+        text-align: center
+      }
     }
 
-    .project-card-inner, .featured-inner {
-      transform: translateZ(30px);
-      transition: transform 0.4s;
+    @media (max-width:600px) {
+      section {
+        padding: 5rem 1.25rem
+      }
+
+      .capabilities-grid,
+      .projects-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-stats {
+        gap: 1.25rem
+      }
+
+      .stat-card {
+        padding: 1.5rem 2rem
+      }
     }
-    
-    .project-card:hover .project-card-inner, .featured-card:hover .featured-inner {
-      transform: translateZ(50px);
+  
+    /* ── Hero Enhancements ── */
+    .hero-glow-1, .hero-glow-2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 1;
+      opacity: 0.6;
+      animation: floatOrbs 10s ease-in-out infinite alternate;
+    }
+    .hero-glow-1 {
+      width: 400px; height: 400px;
+      background: rgba(37, 99, 235, 0.15); /* Soft primary blue */
+      top: 20%; left: 20%;
+    }
+    .hero-glow-2 {
+      width: 300px; height: 300px;
+      background: rgba(96, 165, 250, 0.1); /* Lighter blue */
+      bottom: 20%; right: 20%;
+      animation-delay: -5s;
+    }
+    @keyframes floatOrbs {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -50px) scale(1.1); }
     }
 
-    /* ──────────────────────────────────────────────────────────
-       RESPONSIVE
-    ────────────────────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      nav { padding: 1.25rem 1.5rem; }
-      .nav-links { display: none; }
-      .about-grid { grid-template-columns: 1fr; gap: 4rem; }
-      .capabilities-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
-      .projects-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .hero-stats { gap: 2.5rem; flex-wrap: wrap; }
-      .featured-card { padding: 2.5rem; }
-      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      animation: fadeInDown 1s ease 0.2s both;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: #10b981; /* Emerald green */
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+      animation: pulseGreen 2s infinite;
+    }
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
-    @media (max-width: 600px) {
-      section { padding: 5rem 1.5rem; }
-      .capabilities-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .contact-inner { padding: 3rem 1.5rem; }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease 1s both;
     }
+    .hero-btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .hero-btn.primary-btn {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+    .hero-btn.primary-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
+    }
+
   </style>
 </head>
-<body>
-  
-  <div class="cursor-glow" id="cursor-glow"></div>
 
-  <!-- ══════════════════════════════════════════════════════════
-       LOCK SCREEN
-  ═══════════════════════════════════════════════════════════ -->
+<body>
+
+  <!-- LOCK SCREEN -->
   <div id="lock-screen">
-    <div class="lock-bg"></div>
     <div class="lock-content">
-      <div class="lock-monogram">DP</div>
+      <div class="lock-monogram">AS</div>
       <div class="lock-divider"></div>
       <p class="lock-subtitle">Private Portfolio Access Required</p>
-      <form class="lock-form" id="lock-form" onsubmit="checkPassword(event)">
+      <form class="lock-form" onsubmit="checkPassword(event)">
         <label class="lock-label" for="password-input">Enter Access Code</label>
-        <div class="lock-input-wrap">
-          <input 
-            type="password" 
-            id="password-input" 
-            placeholder="••••••••••" 
-            autocomplete="off"
-            autofocus
-          >
-        </div>
+        <input type="password" id="password-input" placeholder="••••••••••" autocomplete="off" autofocus>
         <button type="submit" class="lock-btn">Unlock Portfolio</button>
         <div class="lock-error" id="lock-error">&nbsp;</div>
       </form>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════════
-       PORTFOLIO
-  ═══════════════════════════════════════════════════════════ -->
+  <!-- PORTFOLIO -->
   <div id="portfolio">
 
-    <!-- NAV -->
     <nav id="main-nav">
-      <div class="nav-logo">Digital Portfolio</div>
+      <div class="nav-logo">AS Dev</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services-projects">Services</a></li>
@@ -1307,93 +1056,189 @@
     </nav>
 
     <!-- HERO -->
-    <section class="hero" id="hero">
+    <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
         <p class="hero-eyebrow">Web Development &amp; AI Automation</p>
         <h1 class="hero-name">Creative <span>Developer</span></h1>
         <p class="hero-tagline">Engineering Bespoke Digital Experiences</p>
-        <div class="hero-divider"></div>
+        <div class="hero-stats">
+          <div class="stat-card"><span class="stat-number">50+</span><span class="stat-label">Projects</span></div>
+          <div class="stat-card"><span class="stat-number">5+</span><span class="stat-label">Years</span></div>
+          <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Countries</span></div>
+        </div>
       </div>
+    </section>
 
-    </section><!-- PORTFOLIO PROJECTS -->
+    <!-- SERVICE PROJECTS -->
     <section id="services-projects">
       <div class="container">
-        <div class="projects-header reveal">
-          <div>
-            <p class="section-label">Portfolio</p>
-            <h2 class="section-title">Recent Work</h2>
-            <p class="section-subtitle">A collection of custom-built digital platforms, from robust e-commerce solutions to innovative mobile applications.</p>
-          </div>
+        <div class="section-head reveal">
+          <p class="section-label">Portfolio — Services</p>
+          <h2 class="section-title">Service Websites</h2>
+          <p class="section-subtitle">Custom-built websites for businesses delivering real-world services — from tech
+            consultancies and professional firms to luxury hospitality and enterprise solutions.</p>
         </div>
+
+        <a href="https://rexotech.io" target="_blank" rel="noopener" class="featured-card reveal">
+          <div class="card-inner">
+            <span class="featured-badge">Featured Project</span>
+            <div class="project-name">Rexotech</div>
+            <span class="project-url">rexotech.io</span>
+            <p class="project-desc">A full-service digital agency offering cutting-edge technology solutions — web
+              development, mobile apps, UI/UX design, and IT consulting for businesses accelerating their digital
+              transformation. Built on a clean, modern Elementor-powered WordPress stack.</p>
+            <span class="featured-cta">Visit Project →</span>
+          </div>
+        </a>
 
         <div class="projects-grid">
 
-          <!-- MetaAppVerse -->
-          <a href="https://metaappverse.com/" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">App Development</span>
+          <a href="https://metaappverse.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Mobile Apps</span>
               <div class="project-name">MetaAppVerse</div>
               <span class="project-url">metaappverse.com</span>
-              <p class="project-desc">A premium mobile app development agency specializing in Android, iOS, and cross-platform applications with advanced IoT and AR integrations.</p>
+              <p class="project-desc">A premium mobile app development agency specializing in Android, iOS, and
+                cross-platform applications with advanced IoT and AR integrations.</p>
               <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">React Native</span>
-                  <span class="tech-pill">Flutter</span>
-                  <span class="tech-pill">UI/UX</span>
+                <div class="project-tech"><span class="tech-pill">React Native</span><span class="tech-pill">IoT</span>
                 </div>
                 <span class="project-arrow">→</span>
               </div>
             </div>
           </a>
 
-          <!-- MetaWebVerse -->
-          <a href="https://metawebverse.com/" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Digital Marketing</span>
+          <a href="https://metawebverse.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Digital Agency</span>
               <div class="project-name">MetaWebVerse</div>
               <span class="project-url">metawebverse.com</span>
-              <p class="project-desc">A comprehensive digital agency offering custom design, SEO optimization, and digital marketing strategies to maximize revenue and brand presence.</p>
+              <p class="project-desc">A comprehensive digital agency offering custom WordPress design, SEO optimization,
+                and digital marketing strategies to maximize revenue.</p>
               <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">WordPress</span>
-                  <span class="tech-pill">SEO</span>
-                  <span class="tech-pill">Marketing</span>
+                <div class="project-tech"><span class="tech-pill">WordPress</span><span class="tech-pill">SEO</span>
                 </div>
                 <span class="project-arrow">→</span>
               </div>
             </div>
           </a>
 
-          <!-- ECC Controls -->
-          <a href="https://www.ecccontrolsandautomation.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
-              <span class="project-tag">Automation & Hardware</span>
-              <div class="project-name">ECC Controls</div>
+          <a href="https://www.ecccontrolsandautomation.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Industrial</span>
+              <div class="project-name">ECC Controls &amp; Automation</div>
               <span class="project-url">ecccontrolsandautomation.com</span>
-              <p class="project-desc">Transforming industrial ideas into reality through hardware integration, remote monitoring services, and embedded system development.</p>
+              <p class="project-desc">Transforming industrial ideas into reality through hardware integration, remote
+                monitoring services, and embedded system development.</p>
               <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">IoT</span>
-                  <span class="tech-pill">Embedded Systems</span>
+                <div class="project-tech"><span class="tech-pill">IoT</span><span class="tech-pill">Automation</span>
                 </div>
                 <span class="project-arrow">→</span>
               </div>
             </div>
           </a>
 
-          <!-- KRC Total Solutions -->
-          <a href="https://www.krctotalsolutions.com" target="_blank" class="project-card reveal">
-            <div class="project-card-inner">
+          <a href="https://www.krctotalsolutions.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
               <span class="project-tag">Tech Consultancy</span>
               <div class="project-name">KRC Total Solutions</div>
               <span class="project-url">krctotalsolutions.com</span>
-              <p class="project-desc">A custom-built digital platform delivering end-to-end tech solutions, automation strategies, and enterprise-grade software development for B2B clients.</p>
+              <p class="project-desc">A custom-built digital platform delivering end-to-end tech solutions, automation
+                strategies, and enterprise-grade software development.</p>
               <div class="project-footer">
-                <div class="project-tech">
-                  <span class="tech-pill">Shopify</span>
-                  <span class="tech-pill">Bespoke Software</span>
+                <div class="project-tech"><span class="tech-pill">Bespoke Software</span><span
+                    class="tech-pill">Automation</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://sensorysentiments.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Creative Services</span>
+              <div class="project-name">Sensory Sentiments</div>
+              <span class="project-url">sensorysentiments.com</span>
+              <p class="project-desc">A creative sensory experience brand delivering curated events, gifting, and
+                lifestyle experiences through emotive storytelling and elegant design.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">WordPress</span><span
+                    class="tech-pill">Elementor</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="http://wjlc-sa.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Legal / Corporate</span>
+              <div class="project-name">WJLC Saudi Arabia</div>
+              <span class="project-url">wjlc-sa.com</span>
+              <p class="project-desc">A professional legal services website for a Saudi Arabian law consultancy —
+                authoritative, trust-building corporate design with full Arabic support.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">WordPress</span><span
+                    class="tech-pill">Bilingual</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://aimsassociates.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Consulting</span>
+              <div class="project-name">AIMS Associates</div>
+              <span class="project-url">aimsassociates.com</span>
+              <p class="project-desc">A management and consulting firm providing strategic advisory, business
+                development, and corporate services across multiple sectors.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">WordPress</span><span
+                    class="tech-pill">Elementor</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://starskylinelimousine.ae" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Luxury Automotive</span>
+              <div class="project-name">Star Skyline Limousine</div>
+              <span class="project-url">starskylinelimousine.ae</span>
+              <p class="project-desc">Dubai's premier chauffeur-driven luxury car rental service — a premium fleet
+                showcase that mirrors the sophistication of the on-ground experience.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">WordPress</span><span
+                    class="tech-pill">UAE</span><span class="tech-pill">Booking</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://hhenterprise.pk" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Fashion / Wholesale</span>
+              <div class="project-name">HH Enterprise</div>
+              <span class="project-url">hhenterprise.pk</span>
+              <p class="project-desc">A Pakistan-based wholesale fashion platform spanning fine jewelry, apparel,
+                accessories, and bags — built on a multi-category architecture with wholesale and retail ordering.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">Custom Platform</span><span
+                    class="tech-pill">Pakistan</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://webstormlab.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Web Agency</span>
+              <div class="project-name">Web Storm Lab</div>
+              <span class="project-url">webstormlab.com</span>
+              <p class="project-desc">A full-service web and app development studio delivering bespoke digital solutions
+                — from cutting-edge web applications to brand-defining creative campaigns.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">WordPress</span><span class="tech-pill">Agency</span>
                 </div>
                 <span class="project-arrow">→</span>
               </div>
@@ -1404,15 +1249,146 @@
       </div>
     </section>
 
-    
+    <!-- ECOM PROJECTS -->
+    <section id="ecom-projects" class="alt-bg">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">Portfolio — E-Commerce</p>
+          <h2 class="section-title">Online Stores</h2>
+          <p class="section-subtitle">High-converting Shopify and WooCommerce stores built to drive sales — from toy
+            retailers and organic naturals to preloved tech gadgets and performance sportswear.</p>
+        </div>
+
+        <a href="https://techmarket.ae" target="_blank" rel="noopener" class="featured-card reveal">
+          <div class="card-inner">
+            <span class="featured-badge">Featured Ecom Store</span>
+            <div class="project-name">Tech Market</div>
+            <span class="project-url">techmarket.ae</span>
+            <p class="project-desc">UAE's trusted destination for preloved and certified pre-owned devices —
+              professionally tested smartphones, laptops, MacBooks, and gadgets with verified quality. Built on Shopify
+              with a sleek, luxury aesthetic for the premium refurbished tech market.</p>
+            <span class="featured-cta">Visit Project →</span>
+          </div>
+        </a>
+
+        <div class="projects-grid">
+
+          <a href="https://www.mytoys.com.pk" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Toys / Children</span>
+              <div class="project-name">My Toys</div>
+              <span class="project-url">mytoys.com.pk</span>
+              <p class="project-desc">Pakistan's trusted toy store offering premium, safe, and educational toys for all
+                ages — a vibrant, family-friendly Shopify experience with fast delivery.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">Pakistan</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://aghanaturals.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Natural / Organic</span>
+              <div class="project-name">Agha Naturals</div>
+              <span class="project-url">aghanaturals.com</span>
+              <p class="project-desc">A premium organic products store focused on clean beauty and wellness — a pure,
+                trust-building Shopify storefront for the natural lifestyle space.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">Organic</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://julhascollection.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Fashion / Apparel</span>
+              <div class="project-name">Julhaas Collection</div>
+              <span class="project-url">julhascollection.com</span>
+              <p class="project-desc">A boutique fashion brand with a curated collection of clothing and accessories —
+                clean, minimal Shopify design that lets the fashion speak for itself.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">Fashion</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://billfishgear.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Outdoor / Performance</span>
+              <div class="project-name">Billfish Gear</div>
+              <span class="project-url">billfishgear.com</span>
+              <p class="project-desc">Leaders in lightweight performance apparel for the most challenging environments —
+                a bold Shopify store with a rugged, outdoor-adventure aesthetic.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">Shopify</span><span class="tech-pill">USA</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://trendsquarestore.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Fashion / Trends</span>
+              <div class="project-name">Trend Square Store</div>
+              <span class="project-url">trendsquarestore.com</span>
+              <p class="project-desc">A trend-driven fashion and lifestyle store built for high conversion — a dynamic
+                shopping experience for trend-conscious customers.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">E-Commerce</span><span
+                    class="tech-pill">Fashion</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://padelup.pk" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Sports / Equipment</span>
+              <div class="project-name">Padel Up</div>
+              <span class="project-url">padelup.pk</span>
+              <p class="project-desc">Pakistan's go-to destination for padel rackets, balls, and gear — a specialist
+                sports store serving the country's fast-growing padel community.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">E-Commerce</span><span
+                    class="tech-pill">Pakistan</span></div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://pumpculturellc.com" target="_blank" rel="noopener" class="project-card reveal">
+            <div class="card-inner">
+              <span class="project-tag">Fitness / Lifestyle</span>
+              <div class="project-name">Pump Culture LLC</div>
+              <span class="project-url">pumpculturellc.com</span>
+              <p class="project-desc">A fitness lifestyle brand combining premium gym apparel, supplements, and training
+                culture — an energetic, high-impact online store.</p>
+              <div class="project-footer">
+                <div class="project-tech"><span class="tech-pill">E-Commerce</span><span class="tech-pill">USA</span>
+                </div>
+                <span class="project-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
 
     <!-- CAPABILITIES -->
     <section id="capabilities">
       <div class="container">
-        <div class="reveal" style="text-align:center; max-width:700px; margin:0 auto 1rem;">
-          <p class="section-label">What I Do</p>
+        <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto">
+          <p class="section-label">What We Do</p>
           <h2 class="section-title">Core Capabilities</h2>
-          <p class="section-subtitle">A full suite of digital services delivered with precision, creativity, and commercial acumen.</p>
+          <p class="section-subtitle" style="margin:0 auto">A full suite of digital services delivered with precision,
+            creativity, and commercial acumen.</p>
         </div>
 
         <div class="capabilities-grid reveal">
@@ -1423,7 +1399,8 @@
               </svg>
             </div>
             <div class="capability-title">Web Development</div>
-            <p class="capability-desc">Pixel-perfect, responsive websites built on WordPress, Shopify, and custom stacks. Specializing in advanced API integrations.</p>
+            <p class="capability-desc">Pixel-perfect, responsive websites built on WordPress, Shopify, and custom
+              stacks, with advanced API integrations.</p>
           </div>
           <div class="capability-item">
             <div class="capability-icon">
@@ -1432,16 +1409,19 @@
               </svg>
             </div>
             <div class="capability-title">E-Commerce Architecture</div>
-            <p class="capability-desc">Bespoke Shopify Liquid themes, payment gateways, and advanced Klaviyo automations to maximize retention and conversion.</p>
+            <p class="capability-desc">Bespoke Shopify Liquid themes, payment gateways, and advanced Klaviyo automations
+              to maximize retention and conversion.</p>
           </div>
           <div class="capability-item">
             <div class="capability-icon">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>
-            <div class="capability-title">AI & Chatbots</div>
-            <p class="capability-desc">Engineering intelligent Python-based WhatsApp Chatbots via the Business API and leveraging LLM workflows for business automation.</p>
+            <div class="capability-title">AI &amp; Chatbots</div>
+            <p class="capability-desc">Intelligent Python-based WhatsApp chatbots via the Business API, plus LLM
+              workflows for business automation.</p>
           </div>
           <div class="capability-item">
             <div class="capability-icon">
@@ -1450,40 +1430,41 @@
               </svg>
             </div>
             <div class="capability-title">Performance Optimization</div>
-            <p class="capability-desc">Enhancing digital storefronts through clean, high-conversion technical infrastructure and rigorous performance testing.</p>
+            <p class="capability-desc">Enhancing digital storefronts through clean, high-conversion technical
+              infrastructure and rigorous performance testing.</p>
           </div>
         </div>
       </div>
     </section>
 
-
-
-    <!-- ABOUT & EXPERIENCE -->
-    <section id="about">
+    <!-- ABOUT -->
+    <section id="about" class="alt-bg">
       <div class="container">
         <div class="about-grid">
-          
-          <div class="about-text reveal-left">
-            
+          <div class="about-text reveal">
             <p class="section-label">About Us</p>
             <h2 class="section-title">Bridging Complex Backend Logic &amp; Seamless UX</h2>
-            <div class="primary-line"></div>
-            <p>We are a high-impact team specializing in e-commerce architecture and AI-driven automation.</p>
-            <p>We are experts in engineering bespoke Shopify Liquid themes and custom WordPress/PHP solutions from the ground up. We bridge the gap between complex backend logic and seamless UX by deploying Python-based API integrations and building intelligent WhatsApp Chatbots via the Business API.</p>
-            <p>By leveraging Advanced Prompt Engineering and LLM workflows, we automate high-level business processes and scale digital storefronts through clean, high-conversion technical infrastructure.</p>
-            <div class="about-skills">
-              <span class="skill-tag">Shopify Custom Liquid</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">HTML5 / CSS3</span>
-              <span class="skill-tag">WhatsApp Chatbot</span>
-              <span class="skill-tag">Prompt Engineering</span>
-              <span class="skill-tag">API Integrations</span>
-              <span class="skill-tag">WordPress / PHP</span>
-            </div>
+            <div class="blue-line"></div>
+            <p>We are a high-impact team specializing in <strong>e-commerce architecture</strong> and <strong>AI-driven
+                automation</strong>.</p>
+            <p>We engineer bespoke <strong>Shopify Liquid themes</strong> and custom <strong>WordPress/PHP
+                solutions</strong> from the ground up, bridging the gap between complex backend logic and seamless UX
+              through Python-based API integrations and intelligent WhatsApp chatbots built on the Business API.</p>
+            <p>By leveraging advanced prompt engineering and <strong>LLM workflows</strong>, we automate high-level
+              business processes and scale digital storefronts through clean, high-conversion technical infrastructure.
+            </p>
           </div>
-
+          <div class="about-skills reveal">
+            <span class="skill-tag">Shopify Custom Liquid</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML5 / CSS3</span>
+            <span class="skill-tag">WhatsApp Chatbot</span>
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">API Integrations</span>
+            <span class="skill-tag">WordPress / PHP</span>
           </div>
+        </div>
       </div>
     </section>
 
@@ -1493,10 +1474,10 @@
       <p>© 2026 Asher Sajjad. All Rights Reserved.</p>
     </footer>
 
-  </div><!-- /#portfolio -->
+  </div>
 
   <script>
-    /* ── Password Gate ─────────────────────────────────── */
+    /* ── Password Gate ── */
     const PASSWORD = 'Random4321';
 
     function checkPassword(e) {
@@ -1505,91 +1486,58 @@
       const error = document.getElementById('lock-error');
 
       if (input.value.trim() === PASSWORD) {
-        const lock = document.getElementById('lock-screen');
+        document.getElementById('lock-screen').classList.add('hidden');
         const portfolio = document.getElementById('portfolio');
-
-        lock.classList.add('hidden');
         portfolio.style.display = 'block';
-
-        // Force reflow then fade in
-        setTimeout(() => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
           portfolio.classList.add('visible');
-          try { initReveal(); } catch(err) { console.error(err); }
-        }, 50);
-
+          initReveal();
+          init3DTilt();
+        }));
       } else {
         error.textContent = 'Incorrect access code. Please try again.';
         input.value = '';
         input.focus();
-
-        // shake animation
         input.style.animation = 'none';
-        setTimeout(() => {
-          input.style.animation = 'shake 0.4s ease';
-        }, 10);
-
+        requestAnimationFrame(() => { input.style.animation = 'shake 0.4s ease'; });
         setTimeout(() => { error.textContent = '\u00a0'; }, 3000);
       }
     }
 
-    /* ── Scroll Reveal ─────────────────────────────────── */
+    /* ── Scroll Reveal ── */
     function initReveal() {
-      const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            // Stagger animations slightly
-            setTimeout(() => {
-              entry.target.classList.add('in-view');
-            }, (i % 3) * 150);
+            setTimeout(() => entry.target.classList.add('in-view'), (i % 3) * 120);
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
-
-      els.forEach(el => observer.observe(el));
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
-    /* ── Nav Scroll Effect ─────────────────────────────── */
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('main-nav');
-      if (nav) {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-      }
-    });
-
-    /* ── Mouse Glow Effect ─────────────────────────────── */
-    document.addEventListener('mousemove', (e) => {
-      const cursor = document.getElementById('cursor-glow');
-      if (cursor) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      }
-
-      // Card Spotlight effect
-      const cards = document.querySelectorAll('.project-card');
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+    /* ── 3D Card Tilt ── */
+    function init3DTilt() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.querySelectorAll('.project-card, .featured-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform =
+            `perspective(800px) rotateY(${x * 15}deg) rotateX(${-y * 15}deg) translateY(-8px)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
       });
-    });
+    }
 
-    /* ── Shake CSS ─────────────────────────────────────── */
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        20%       { transform: translateX(-8px); }
-        40%       { transform: translateX(8px); }
-        60%       { transform: translateX(-6px); }
-        80%       { transform: translateX(6px); }
-      }
-    `;
-    document.head.appendChild(style);
+    /* ── Nav Scroll Effect ── */
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
   </script>
 
 </body>
+
 </html>
